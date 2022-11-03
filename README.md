@@ -1,18 +1,14 @@
-<h1 align="center"> Project Constrool </h1>
-<p align="justify"> Dev Front End  </p>
-
-### Resolvendo problemas
-1. Servidor - Produção : Linux
-2. Servidor - Development: Windows  
+<h1 align="center"> System Auto Bank </h1>
+<p align="justify"> Dev Back End  </p>
 
 
 ## Lista de Tarefas
-1. Registration system
-    - [x] inserção table account
-    - [x] inserção table confirmation
+1. nova conta corrente 
+    - [x] inserção table clientes
+    - [ ] inserção table confirmation
 2. Login system
-    - [x] login lojista
-    - [x] login user
+    - [ ] login lojista
+    - [ ] login user
     - [ ] insercao table attempt
     -
 - [ ] Data validation
