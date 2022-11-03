@@ -30,15 +30,10 @@
                     });
 
                 } else {
-                    
-                    $('.retornoCad').append('Conta Criada!\n');
-                    
-                    //Limpa os inputs
-                    $('#formCadastro input').each(function(){
-                       
-                        $(this).val('');
-                    
-                    }); 
+                    //Redireciona depois de 1 segundo para login
+                    setTimeout(function() {
+                        window.location.href=getRoot()+'views/info-bank';
+                    }, 1000);
 
                 }
             }

@@ -7,6 +7,11 @@
             <h1>Nova Conta Corrente </h1>
         </div>
 
+        <div>
+            
+
+        </div>
+
         <div class="features">
 
             <form action="" method="post" id="formCadastro">

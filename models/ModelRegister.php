@@ -7,7 +7,7 @@
         private int $codigo_agencia;
         private int $codigo_conta;
         private int $saldo=0;
-
+       
         #Realizará a inserção no banco de dados
         public function insertCad($arrayVar){
 
@@ -23,17 +23,15 @@
                     );
             
             $this->insConta($arrayVar);
+            $this->insLog($arrayVar);
                 
-           
         }
         
-        /* Inserção de confirmação,para recuperação de senha */
         public function insConta($arrayVar){
 
             $dataCreatedAd=date('Y-m-d H:i:s', time());
-            $this->codigo_agencia = rand(1,10);
-            $this->codigo_conta = rand(1,100);
-            
+            $this->codigo_agencia = rand(3,100);
+            $this->codigo_conta = rand(100000,999999);
 
             $this->insertDB("conta", "?,?,?,?,?,?", 
                         array(
@@ -48,7 +46,26 @@
                     );
         
         }
-        
+
+        public function insLog($arrayVar){
+            
+            $dataCreatedAd=date('Y-m-d H:i:s', time());
+
+            $this->insertDB(
+                "log",
+                "?,?,?,?,?,?",
+                array(
+                    0,
+                    $this->saldo,
+                    $this->codigo_agencia,
+                    $this->codigo_conta,
+                    $this->saldo,
+                    $dataCreatedAd
+                )
+
+            );
+
+        }        
       
 
         #Veriricar se já existe o mesmo email cadastro no db
