@@ -1,0 +1,21 @@
+{
+    "name": "sistema/autobank",
+    "description": "Sistema de auto bank como parte de processo seletivo vaga back end",
+    "authors": [
+        {
+            "name": "Isaque Menezes",
+            "email": "isaque-menezes@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Classes\\": "../../class/",
+            "Models\\": "../../models/",
+            "Traits\\": "../../traits/"
+        },
+        "files":[
+           "../config/config.php"
+        ]
+    }
+
+}

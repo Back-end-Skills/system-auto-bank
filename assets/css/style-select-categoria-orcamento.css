@@ -1,0 +1,41 @@
+html,body {
+    width: 100vh;
+   
+}
+
+img {
+    width: 100%;
+    opacity: 0.5;
+}
+
+main {
+    position: absolute;
+    max-width: 950px;
+    /* border: 3px solid royalblue; */
+    top: 30%;
+    left: 25%;
+}
+
+
+.select_categoria {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    /* border: 3px solid yellowgreen; */
+    max-width: 950px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+} 
+
+.select_categoria__box {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 270px;
+    height: 200px;
+    margin: 16px;
+    /* border: 1px solid rebeccapurple; */
+    opacity: 1.0;
+}
