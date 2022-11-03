@@ -1,7 +1,7 @@
 <?php
     
     $objPass=new \Classes\ClassPassword();
-    $filter = new \Classes\ClassAuxilia();
+    // $filter = new \Classes\ClassAuxilia();
 
     if(isset($_POST['id'])){ $Id=filter_input(INPUT_POST,'id',FILTER_SANITIZE_SPECIAL_CHARS); }
     elseif(isset($_GET['id'])){ $Id=filter_input(INPUT_GET,'id',FILTER_SANITIZE_SPECIAL_CHARS); }

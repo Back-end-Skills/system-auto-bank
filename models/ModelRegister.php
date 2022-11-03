@@ -2,7 +2,11 @@
     namespace Models;
 
     class ModelRegister extends ModelCrud{
-         
+        
+      
+        private int $codigo_agencia;
+        private int $codigo_conta;
+        private int $saldo=0;
 
         #Realizará a inserção no banco de dados
         public function insertCad($arrayVar){
@@ -17,18 +21,29 @@
                             $arrayVar['hashSenha']                                                                      
                         )
                     );
+            
+            $this->insConta($arrayVar);
                 
            
         }
         
         /* Inserção de confirmação,para recuperação de senha */
-        public function insConfirmation($arrayVar){
+        public function insConta($arrayVar){
 
-            $this->insertDB("confirmation", "?,?,?", 
+            $dataCreatedAd=date('Y-m-d H:i:s', time());
+            $this->codigo_agencia = rand(1,10);
+            $this->codigo_conta = rand(1,100);
+            
+
+            $this->insertDB("conta", "?,?,?,?,?,?", 
                         array(
                             0,
-                            $arrayVar['email'],
-                            $arrayVar['token']
+                            $arrayVar['cpf'],
+                            $this->codigo_agencia,
+                            $this->codigo_conta,
+                            $this->saldo,
+                            $dataCreatedAd
+
                         )
                     );
         
