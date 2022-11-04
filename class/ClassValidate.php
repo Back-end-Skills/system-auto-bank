@@ -13,7 +13,6 @@
         private $password;
         private $login;       
         private $tentativas;
-        private $session;
        
         //composições
         public function __construct()
@@ -81,37 +80,52 @@
         
         }
 
-        #Validação se o dado é uma data nasciemnto
-        public function _validateData($par)
-        {
-
-            $data=\DateTime::createFromFormat("d/m/Y",$par);
-
-            if(($data) && ($data->format("d/m/Y") === $par)){
-                return true;
-            }else{
-                $this->setErro("Data inválida!");
-                return false;
-            }
-        }
-
-        #Validação se o dado é uma data nasciemnto
+        #Validação data nasciemento > 17 
         public function validateData($nascimento)
         {
-        
-            
+    
             $data = new \DateTime($nascimento );
            
-
             $idade = $data->diff( new \DateTime( date('Y-m-d')));
             //var_dump($idade);
             $_idade = $idade->format( '%Y anos' );
  
-            if($_idade > 17) {
+            if($_idade > 17) 
+            {
                 return true;
             } else {
                 $this->setErro("Menor de 18 anos! \n Não permitido abertura de conta");
             }
+        }
+
+        public function validatePassword(string $input)
+        {
+            $quant = strlen($input);
+            $array_quant = str_split($input);
+
+            //var_dump( $array_quant);
+            
+            if(!is_numeric($input))
+            {
+                $this->setErro("Valores devem conter apenas dígitos!");
+                return false;
+            } else {
+                if($quant < 6) 
+                {
+                    $this->setErro("Digite pelo menos 6 dígitos!");
+                    return false;
+                } else {
+                    if(count(array_unique($array_quant)) > 1) 
+                    {
+                        $this->setErro("Valores repetidos não permitidos!");
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+               
+            } 
+         
         }
 
 
@@ -124,14 +138,6 @@
                 $this->setErro("Senha diferente de confirmação de senha!");  
             }
 
-        }
-
-        #Verificação da senha digitada com o hash no banco de dados
-        public function validateSenha($email,$senha)
-        {
-            if($this->password->verifyHash($email,$senha)){   return true;  }
-            else{  $this->setErro("Usuário ou Senha Inválidos!");  return false;  }
-        
         }
 
         #Validação final do cadastro
@@ -152,8 +158,20 @@
             }
             return json_encode($arrayResponse);
         }
+
+        #Verificação da senha digitada com o hash no banco de dados
+        public function validateSenha($email,$senha)
+        {
+            if($this->password->verifyHash($email,$senha))
+            {   
+                return true;  
+            } else {  
+                $this->setErro("Usuário ou Senha Inválidos!");  
+                return false;  
+            }
+         
+        }
         
-      
 
         #Validação final do login
         public function validateFinalLogin($email)
@@ -170,8 +188,7 @@
             }else {
                
                     $this->login->deleteAttempt();
-                    $this->session->setSessions($email);
-                  
+                   
                     $arrayResponse=[
                         "retorno"=>"success",
                         "page"=>"home",
