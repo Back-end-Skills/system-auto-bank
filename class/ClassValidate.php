@@ -24,8 +24,15 @@
          
         }
 
-        public function getErro(){   return $this->erro;  }
-        public function setErro($erro){  array_push($this->erro,$erro);  }
+        public function getErro()
+        {   
+            return $this->erro;  
+        }
+
+        public function setErro($erro)
+        {  
+            array_push($this->erro,$erro);  
+        }
 
         #Validar se os campos desejados foram preenchidos
         public function validateFields($par){
@@ -74,6 +81,39 @@
         
         }
 
+        #Validação se o dado é uma data nasciemnto
+        public function _validateData($par)
+        {
+
+            $data=\DateTime::createFromFormat("d/m/Y",$par);
+
+            if(($data) && ($data->format("d/m/Y") === $par)){
+                return true;
+            }else{
+                $this->setErro("Data inválida!");
+                return false;
+            }
+        }
+
+        #Validação se o dado é uma data nasciemnto
+        public function validateData($nascimento)
+        {
+        
+            
+            $data = new \DateTime($nascimento );
+           
+
+            $idade = $data->diff( new \DateTime( date('Y-m-d')));
+            //var_dump($idade);
+            $_idade = $idade->format( '%Y anos' );
+ 
+            if($_idade > 17) {
+                return true;
+            } else {
+                $this->setErro("Menor de 18 anos! \n Não permitido abertura de conta");
+            }
+        }
+
 
         #Verificar se a senha é igual a confirmação de senha
         public function validateConfSenha($senha,$senhaConf){
@@ -97,7 +137,8 @@
         #Validação final do cadastro
         public function validateFinalCad($arrayVar)
         {
-            if(count($this->getErro()) > 0){
+            if(count($this->getErro()) > 0)
+            {
                 $arrayResponse=[ 
                     "retorno"=>"erro",
                     "erros"=>$this->getErro()
