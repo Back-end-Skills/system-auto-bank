@@ -103,10 +103,8 @@
         public function validatePassword(string $input)
         {
             $quant = strlen($input);
-            $array_quant = str_split($input);
+            $array_quant = str_split($input);         
 
-            //var_dump( $array_quant);
-            
             if(!is_numeric($input))
             {
                 $this->setErro("Valores devem conter apenas dígitos!");
@@ -117,13 +115,15 @@
                     $this->setErro("Digite pelo menos 6 dígitos!");
                     return false;
                 } else {
-                    if(count(array_unique($array_quant)) > count($array_quant)) 
+                
+                    if(array_unique(array_diff_assoc($array_quant, array_unique($array_quant))))
                     {
-                        $this->setErro("Valores duplicados não permitidos!");
-                        return false;
+                        $this->setErro("Dígitos iguais não permitido!");
+                         return false;
                     } else {
                         return true;
                     }
+                
                 }
                
             } 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página não encontrada</title>
+    <title>Página Cliente</title>
     <style>
         body{
             margin: 0;
@@ -50,7 +50,7 @@
 <body>
 <div class="container">
 
-      <h2>Bem - Vindo ! Dashoboard do usuário. </h2>
+      <h2>Bem - Vindo ! Dashoboard do Cliente. </h2>
       <h1>Home</h1>
        
     </div>
