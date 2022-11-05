@@ -51,32 +51,25 @@
             type: 'post',
             dataType: 'json',
             data: dados,
-            success: function (response) {
-                if(response.retorno == 'success'){
+            success: function (response) 
+            {
+                if(response.retorno == 'success')
+                {
                     window.location.href=response.page;
-                }else{
-                    if(response.tentativas == true){
-                        $('.loginFormulario').hide();  //Trava de segurança 
-                    }
-                    $('.resultadoForm').empty();
-                    $.each(response.erros, function(key, value){
-                        $('.resultadoForm').append(value+'<br>');
+                } else {
+                    // if(response.tentativas == true)
+                    // {
+                    //     $('.loginFormulario').hide();  
+                    // }
+                    //$('.__responseLogin').empty();
+
+                    $.each(response.erros, function(key, value)
+                    {
+                        $('.__responseLogin').append(value+'<br>');
                     });
                 } 
             }
         });
     });
 
-    
-
-    /*==============================================*/
-    /*         Aviso Sobre Tecla CapsLock           */ 
-    $("#senha").keypress(function(e){
-        kc=e.keyCode?e.keyCode:e.which;
-        sk=e.shiftKey?e.shiftKey:((kc==16)?true:false);
-        if(((kc>=65 && kc<=90) && !sk)||(kc>=97 && kc<=122)&&sk){ $(".resultadoForm").html("Caps Lock Ligado"); }
-        else{ $(".resultadoForm").empty(); }
-    });
-
-    
    

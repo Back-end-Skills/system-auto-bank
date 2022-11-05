@@ -21,9 +21,10 @@
         }
 
         #Verificar se o hash da senha está correto
-        public function verifyHash($email,$senha)
+        public function verifyHash($_codigo_conta, $senha)
         {
-            $hashDb=$this->db->getDataUser($email);
+            $hashDb=$this->db->getDataUser($_codigo_conta);
+            //var_dump($hashDb);
             return password_verify($senha, $hashDb["data"]["senha"]);
         }
 

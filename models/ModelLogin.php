@@ -13,54 +13,39 @@
             $this->trait=TraitGetIp::getUserIp();
             $this->dateNow=date("Y-m-d H:i:s");
 
-        }        
-
+        }      
+        
         #Retorna os dados do usuário
-        public function getDataUser($email){
+        public function getDataUser(string $_codigo_conta){
 
-            $b=$this->selectDB("*", "account","where email=?", array($email));
+            $b=$this->selectDB("*", "conta","where codigo_conta=?", array($_codigo_conta));
             $f=$b->fetch(\PDO::FETCH_ASSOC);
             $r=$b->rowCount();
             
-            return $arrayData=[ 
-                                "data"=>$f, 
-                                "rows"=>$r
-                              ];           
-        }
-
-        #Conta as tentativas de login e efetuar o bloqueio.
-        public function countAttempt(){
-
-            $b=$this->selectDB("*", "attempt", "where ip=?",array($this->trait));
-            $r=0;
+            // return $arrayData=[ 
+            //                     "data"=>$f, 
+            //                     "rows"=>$r
+            //                   ]; 
             
-            while($f=$b->fetch(\PDO::FETCH_ASSOC)){
-
-                //tempo de bloqueio em segundos
-                if(strtotime($f["date"]) > strtotime($this->dateNow) - 10){  $r++;   }
-            }
-            return $r;
-        }
-
-        #INSERE AS TENTATIVAS DE LOGIN NO DB 
-        public function insertAttempt(){
-
-            if($this->countAttempt() < 5)
-            {
-                $this->insertDB("attempt", "?,?,?", 
-                            array(
-                                0, 
-                                $this->trait, 
-                                $this->dateNow
-                            )
-                        );
-            }
-        }
-
-        #Deleta as tentativas do DB
-        public function deleteAttempt(){
+            $fk_cliente = $f['fk_cliente'];
             
-            $this->deleteDB("attempt", "ip=?", array($this->trait));
+            $query_cliente=$this->selectDB(
+                "*", 
+                "clientes",
+                "where cpf=?", 
+                array(
+                    $fk_cliente
+                )
+            );
+            
+            $fetch_cliente = $query_cliente->fetch(\PDO::FETCH_ASSOC);
+            $r_cliente = $query_cliente->rowCount();  
+            
+            return $_arrayData=[ 
+                "data"=>$fetch_cliente, 
+                "rows"=>$r_cliente
+              ]; 
         }
+
 
     }

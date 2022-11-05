@@ -5,12 +5,11 @@
 ## Lista de Tarefas
 1. nova conta corrente 
     - [x] inserção table clientes
-    - [ ] inserção table confirmation
+    - [x] inserção table conta
+    - [x] inserção table log
 2. Login system
-    - [ ] login lojista
-    - [ ] login user
-    - [ ] insercao table attempt
-    -
+    - [ ] login 
+    
 - [ ] Data validation
 - [ ] Register and login tests
 - [ ] Database normalization

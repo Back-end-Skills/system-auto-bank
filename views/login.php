@@ -4,14 +4,18 @@
 <div style="margin-top:3rem; display: flex; align-items: center; justify-content:center;">  
 
     <form  action="<?php echo DIRPAGE.'controller/controllerLogin'; ?>" name="formLogin" id="formLogin" method="post">
+        <div class="__responseLogin"></div>
 
-
-        <input name="email" type="email" id="email" placeholder="Seu Email" required><br><br>
-        <input name="senha" type="password" id="senha" placeholder="Sua Senha" required><br><br>
+        <input type="text" name="codigo_agencia"  id="codigo_agencia" placeholder="Código agência" /><br><br> 
+        <input type="text" name="codigo_conta"  id="codigo_conta" placeholder="Código Conta" /><br><br> 
+        
+        <input type="password" name="senha"  id="senha" placeholder="Sua Senha" required><br><br>
 
         <button type="submit" >Entrar</button><br><br>
+        <a href="#" >Esqueci minha senha</button><br><br>
         
-        <a href="<?php echo DIRPAGE.'recover-password'; ?>">Esqueci minha senha</a>
+        <a href="<?php echo DIRPAGE.'nova-conta-corrente'; ?>" >Nova Conta </button><br><br>
+        
 
     </form>
 

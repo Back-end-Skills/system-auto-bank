@@ -65,14 +65,31 @@
 
             );
 
-        }        
-      
-
-        #Veriricar se já existe o mesmo email cadastro no db
+        } 
+        
         public function getIssetEmail($email){
 
-            $b=$this->selectDB("*", "clientes", "where email=?", 
-                            array($email)
+            $b=$this->selectDB("*", "clientes", "where email=?", array($email));
+            return $b->rowCount();
+            
+        }
+      
+        #Veriricar se existe agencia
+        public function getIssetAgencia(string $_codigo_agencia){
+
+            $b=$this->selectDB("*", "conta", "where codigo_agencia=?", 
+                            array($_codigo_agencia)
+                        );
+
+            return $b->rowCount();
+            
+        }
+
+        #Veriricar se existe Conta
+        public function getIssetConta(string $_codigo_conta){
+
+            $b=$this->selectDB("*", "conta", "where codigo_conta=?", 
+                            array($_codigo_conta)
                         );
 
             return $b->rowCount();

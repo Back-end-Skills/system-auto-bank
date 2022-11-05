@@ -72,11 +72,13 @@
                 if($b > 0){ $this->setErro("Email já cadastrado!"); return false; }
                 else{ return true; }
             
-            } else { //login 
+            } 
+            else { //login 
                 
-                if($b > 0){ return true;  }
-                else{$this->setErro("Email não cadastrado!"); return false; }
-            }
+            //     if($b > 0){ return true;  }
+            //     else{$this->setErro("Email não cadastrado!"); return false; }
+            // 
+        }
         
         }
 
@@ -115,9 +117,9 @@
                     $this->setErro("Digite pelo menos 6 dígitos!");
                     return false;
                 } else {
-                    if(count(array_unique($array_quant)) > 1) 
+                    if(count(array_unique($array_quant)) > count($array_quant)) 
                     {
-                        $this->setErro("Valores repetidos não permitidos!");
+                        $this->setErro("Valores duplicados não permitidos!");
                         return false;
                     } else {
                         return true;
@@ -127,7 +129,6 @@
             } 
          
         }
-
 
         #Verificar se a senha é igual a confirmação de senha
         public function validateConfSenha($senha,$senhaConf){
@@ -158,46 +159,9 @@
             }
             return json_encode($arrayResponse);
         }
-
-        #Verificação da senha digitada com o hash no banco de dados
-        public function validateSenha($email,$senha)
-        {
-            if($this->password->verifyHash($email,$senha))
-            {   
-                return true;  
-            } else {  
-                $this->setErro("Usuário ou Senha Inválidos!");  
-                return false;  
-            }
-         
-        }
         
 
-        #Validação final do login
-        public function validateFinalLogin($email)
-        {
-            if(count($this->getErro()) >0)
-            {
-                $this->login->insertAttempt();
-
-                $arrayResponse=[
-                    "retorno"=>"erro",
-                    "erros"=>$this->getErro(),
-                    "tentativas"=>$this->tentativas
-                ];
-            }else {
-               
-                    $this->login->deleteAttempt();
-                   
-                    $arrayResponse=[
-                        "retorno"=>"success",
-                        "page"=>"home",
-                        "tentativas"=>$this->tentativas
-                    ];
-                
-            } 
-            return json_encode($arrayResponse);
-        }
+      
 
       
 

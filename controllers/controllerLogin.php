@@ -1,14 +1,11 @@
 <?php
-    $validate=new Classes\ClassValidate();
-
-    $validate->validateFields($_POST);               //valida se todos os campos via post estão preechidos
-    $validate->validateEmail($Email);                // validação do email
-    $validate->validateIssetEmail($Email, "login");  // verificação se o email está no banco de dados para o login
-    $validate->validateSenha($Email, $senha);        //verificação de senhas
-    $validate->validateAttemptLogin();               //controle d tentativas de login do usuário
-
+    $validate=new Classes\ClassValidateLogin();
     
+    $validate->validateFields($_POST);
+    $validate->validateAgencia($_codigo_agencia);                
+    $validate->validateConta($_codigo_conta);               
+    $validate->validateSenha($_codigo_conta,$senha);        
        
-    echo $validate->validateFinalLogin($Email);      //Validação Final
+    echo $validate->validateFinalLogin($_codigo_conta);
     
     
