@@ -56,7 +56,7 @@
                 "?,?,?,?,?,?",
                 array(
                     0,
-                    $this->saldo,
+                    '0',
                     $this->codigo_agencia,
                     $this->codigo_conta,
                     $this->saldo,
@@ -93,6 +93,29 @@
                         );
 
             return $b->rowCount();
+            
+        }
+
+        #Grava log de login
+        public function isLogLogin($_codigo_conta){
+
+            $q=$this->selectDB("*", "conta", "where codigo_conta=?", array($_codigo_conta));
+            $f = $q->fetch(\PDO::FETCH_ASSOC);
+
+            $dataCreatedAd=date('Y-m-d H:i:s', time());
+
+            $this->insertDB(
+                "log",
+                "?,?,?,?,?,?",
+                array(
+                    0,
+                    0,
+                    $f['codigo_agencia'],
+                    $f['codigo_conta'],
+                    0,
+                    $dataCreatedAd
+                )
+            );
             
         }
 

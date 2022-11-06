@@ -25,7 +25,6 @@
                     <input type="email" name="email"  id="email" placeholder="meuemail@gmail.com"  ><br><br>			  
                     
                     <input type="password" name="senha"  id="senha" placeholder="Crie Uma Senha" ><br><br>
-                    <input type="password" name="senhaConf"  id="senhaConf" placeholder="Confirme Sua Senha"  ><br><br>
                                             
                     <button type="submit" class="btn">Registrar</button><br>
 

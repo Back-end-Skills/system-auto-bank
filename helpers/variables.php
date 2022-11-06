@@ -1,14 +1,13 @@
 <?php
     
     $objPass=new \Classes\ClassPassword();
-    // $filter = new \Classes\ClassAuxilia();
 
-    if(isset($_POST['id']))
-    { 
-        $Id=filter_input(INPUT_POST,'id',FILTER_SANITIZE_SPECIAL_CHARS); 
-    } else { 
-        $Id=0; 
-    }
+    // if(isset($_POST['id']))
+    // { 
+    //     $Id=filter_input(INPUT_POST,'id',FILTER_SANITIZE_SPECIAL_CHARS); 
+    // } else { 
+    //     $Id=0; 
+    // }
     
     if(isset($_POST['nome']))
     {
@@ -37,17 +36,19 @@
         $_cpf=0; 
     }
  
-    // Senha e senhaConf
     if(isset($_POST['senha']))
     {  
         $senha=$_POST['senha'];  $hashSenha=$objPass->passwordHash($senha);  
+    } else {  
+        $senha=null; $hashSenha=null;   
     }
-    else{  $senha=null; $hashSenha=null;   }
-    if(isset($_POST['senhaConf'])){  
-        $senhaConf=$_POST['senhaConf'];  
-    } else { 
-        $senhaConf=null;  
-    }
+
+
+    // if(isset($_POST['senhaConf'])){  
+    //     $senhaConf=$_POST['senhaConf'];  
+    // } else { 
+    //     $senhaConf=null;  
+    // }
  
     //Esqueci minha senha - Recuperação db account e db confimation
     $token=bin2hex(random_bytes(64));

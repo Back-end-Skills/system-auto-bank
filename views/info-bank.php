@@ -3,11 +3,10 @@
 
     $crud = new ModelCrud();
 
-    $select_conta = $crud->selectDB("*", "conta","ORDER BY id_conta DESC", array()); 
-                                            
-$dados_conta = $select_conta->fetch(\PDO::FETCH_ASSOC);  
+    $select_conta = $crud->selectDB("*", "conta","ORDER BY id_conta DESC", array());                                         
+    $dados_conta = $select_conta->fetch(\PDO::FETCH_ASSOC);  
 
-     var_dump($dados_conta);
+    //var_dump($dados_conta);
     
 
 ?>
@@ -18,24 +17,23 @@ $dados_conta = $select_conta->fetch(\PDO::FETCH_ASSOC);
     <section>
 
         <div class="_title">
-            <h1>Nova Conta Corrente </h1>
+            <h1>Dados da Sua Conta</h1>
         </div>
 
         <div>
-            <?php 
 
+            <h2>Número da sua Conta</h2>
+              <p> <span><?php echo $dados_conta['codigo_conta']; ?></span></p>
+            
+            <h2>Sua Agência</h2>
+             <p> <span><?php echo $dados_conta['codigo_agencia']; ?></span></p>
 
-                echo $dados_conta['id_conta']. "<br>";
-                echo $dados_conta['codigo_conta']. "<br>";
-                echo  $dados_conta['codigo_agencia']."<br>";
-            ?>
+            <p>Utilize sua conta e agencia, juntamente com sua senha para realizar <a href="<?php echo 'login'; ?>"> login </a> </p>
+            <a href="<?php echo '/'; ?>"> Inicial </a>  
+ 
 
+           
         </div>
 
        
     </section>
-
-    <script src="<?php echo DIRJS.'jquery.min.js'; ?>"></script>
-    <script src="<?php echo DIRJS.'javascript.js' ; ?>"></script>
-    
-    

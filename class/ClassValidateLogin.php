@@ -6,7 +6,6 @@
 
     class ClassValidateLogin{
         private array $err = [];
-        private $login;
         private $password;
         private $cadastro_db;
         
@@ -80,15 +79,18 @@
            
         }
 
-            #Validação final do login
+        #Validação final do login
         public function validateFinalLogin($_codigo_conta)
         {
+
             if(count($this->getErr()) > 0)
             {
                 $arrayResponse=[
                     "retorno"=>"erro",
                     "erros"=>$this->getErr()
                 ];
+
+               
             }else {
                     $arrayResponse=[
                         "retorno"=>"success",
@@ -97,6 +99,14 @@
                     ];
                 
             } 
+
+            //gravar log
+            $this->cadastro_db->isLogLogin($_codigo_conta);
+
             return json_encode($arrayResponse);
         }
+        
+     
+
+      
     }

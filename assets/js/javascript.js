@@ -72,4 +72,36 @@
         });
     });
 
+    /*==============================================*/
+    /*         Ajax do Saldo                       */ 
+    $("#formSaldo").on("submit",function(event){
+        event.preventDefault();
+        var dados=$(this).serialize();
+
+        $.ajax({
+        url: getRoot()+'controllers/controllerSaldo',
+            type: 'post',
+            dataType: 'json',
+            data: dados,
+            success: function (response) 
+            {
+                if(response.retorno == 'success')
+                {
+                    window.location.href=response.page;
+                } else {
+                    // if(response.tentativas == true)
+                    // {
+                    //     $('.loginFormulario').hide();  
+                    // }
+                    //$('.__responseLogin').empty();
+
+                    $.each(response.erros, function(key, value)
+                    {
+                        $('.__responseSaldo').append(value+'<br><br>');
+                    });
+                } 
+            }
+        });
+    });
+
    

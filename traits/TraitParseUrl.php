@@ -20,12 +20,6 @@
                 return $url;
             }
 
-            // //Segundas opção
-            // if($par == null){
-            //     return $url;
-            // } else {
-            //     return $url[$par];
-            // }
         }
        
     }

@@ -1,8 +1,7 @@
 <?php
     namespace Models;
 
-    use Traits\TraitGetIp;
-
+   
     class ModelLogin extends ModelCrud{
 
         private $trait;
@@ -10,7 +9,7 @@
 
         public function __construct(){
 
-            $this->trait=TraitGetIp::getUserIp();
+            $this->date =new ModelRegister();
             $this->dateNow=date("Y-m-d H:i:s");
 
         }      
@@ -22,10 +21,10 @@
             $f=$b->fetch(\PDO::FETCH_ASSOC);
             $r=$b->rowCount();
             
-            // return $arrayData=[ 
-            //                     "data"=>$f, 
-            //                     "rows"=>$r
-            //                   ]; 
+            return $arrayData=[ 
+                                "_data"=>$f, 
+                                "_rows"=>$r
+                              ]; 
             
             $fk_cliente = $f['fk_cliente'];
             
@@ -46,6 +45,9 @@
                 "rows"=>$r_cliente
               ]; 
         }
+
+       
+
 
 
     }

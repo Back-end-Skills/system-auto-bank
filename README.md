@@ -1,5 +1,5 @@
 <h1 align="center"> System Auto Bank </h1>
-<p align="justify"> Dev Back End  </p>
+<p align="justify"> Desafio Dev Back End  </p>
 
 
 ## Lista de Tarefas
@@ -8,12 +8,10 @@
     - [x] inserção table conta
     - [x] inserção table log
 2. Login system
-    - [ ] login 
+    - [x] login
+    - [x] log 
     
-- [ ] Data validation
-- [ ] Register and login tests
-- [ ] Database normalization
-- [ ] Email validation
+
 
 
  

@@ -69,8 +69,14 @@
 
             if($action==null){
 
-                if($b > 0){ $this->setErro("Email já cadastrado!"); return false; }
-                else{ return true; }
+                if($b > 0)
+                { 
+                    $this->setErro("Email já cadastrado!");
+                    return false; 
+                } else { 
+                    return true; 
+                }
+
             
             } 
             else { //login 
@@ -128,17 +134,6 @@
                
             } 
          
-        }
-
-        #Verificar se a senha é igual a confirmação de senha
-        public function validateConfSenha($senha,$senhaConf){
-
-            if($senha === $senhaConf){   
-                return true;  
-            } else {   
-                $this->setErro("Senha diferente de confirmação de senha!");  
-            }
-
         }
 
         #Validação final do cadastro
