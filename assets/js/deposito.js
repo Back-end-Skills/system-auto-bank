@@ -7,42 +7,7 @@
     }
     
     /*==============================================*/
-    /*      Ajax do formulário de cadastro          */ 
-    $("#formCadastro").on("submit",function(event){
-        event.preventDefault();
-        var dados=$(this).serialize();
-
-        $.ajax({
-        url: getRoot()+'controllers/controllerRegister',
-            type: 'post',
-            dataType: 'json',
-            data: dados,
-            success: function (response) {
-                
-                $('.retornoCad').empty();
-
-                if(response.retorno == 'erro'){
-
-                    $.each(response.erros,function(key,value){
-                    
-                        $('.retornoCad').append(value+'');
-                    
-                    });
-
-                } else {
-                    //Redireciona depois de 1 segundo para login
-                    setTimeout(function() {
-                        window.location.href=getRoot()+'views/info-bank';
-                    }, 1000);
-
-                }
-            }
-        });
-    });
-
-
-    /*==============================================*/
-    /*         Ajax do Saldo                       */ 
+    /*         Ajax do Deposito                     */ 
     $("#formDepos").on("submit",function(event){
         event.preventDefault();
         var dados=$(this).serialize();
@@ -56,8 +21,15 @@
             {
                 if(response.retorno == 'success')
                 {
-                    $('.__responseDeposito').empty();
-                    $('.__responseDeposito').append('Depósito realizado com Sucesso!\n');
+                   
+                    $('.__responseSuccess').append('Depósito realizado com Sucesso!\n');
+                    
+                    //Limpa os inputs
+                    $('#formDepos input').each(function(){
+                       
+                        $(this).val('');
+                    
+                    }); 
 
                 } else {
                     $.each(response.erros, function(key, value)

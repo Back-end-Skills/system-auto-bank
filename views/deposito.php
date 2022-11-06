@@ -34,6 +34,7 @@
                 
                 <form  action="" name="formDepos" id="formDepos" method="POST">
                     <div class="__responseDeposito"></div> 
+                    <div class="__responseSuccess"></div> 
                     
                     <label for="">Código Agência</label><br>
                     <input type="text" name="codigo_agencia"  id="codigo_agencia" placeholder="Código agência" require/><br><br> 
