@@ -6,14 +6,13 @@
     <form  action="<?php echo DIRPAGE.'controller/controllerLogin'; ?>" name="formLogin" id="formLogin" method="post">
         <div class="__responseLogin"></div>
 
-        <input type="text" name="codigo_agencia"  id="codigo_agencia" placeholder="Código agência" /><br><br> 
-        <input type="text" name="codigo_conta"  id="codigo_conta" placeholder="Código Conta" /><br><br> 
+        <input type="text" name="codigo_agencia"  id="codigo_agencia" placeholder="Código agência" require/><br><br> 
+        <input type="text" name="codigo_conta"  id="codigo_conta" placeholder="Código Conta" require/><br><br> 
         
         <input type="password" name="senha"  id="senha" placeholder="Sua Senha" required><br><br>
 
         <button type="submit" >Entrar</button><br><br>
-        <a href="#" >Esqueci minha senha</button><br><br>
-        
+                
         <a href="<?php echo DIRPAGE.'nova-conta-corrente'; ?>" >Nova Conta </button><br><br>
         
 

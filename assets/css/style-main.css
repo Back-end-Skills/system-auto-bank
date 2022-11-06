@@ -11,6 +11,29 @@ html,body {
     width: 100vh;
 }
 
+.container {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid yellowgreen;
+    width: auto;
+}
+
+.container__box {
+   
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 270px;
+    height: 200px;
+    margin: 16px;
+    border: 1px solid rebeccapurple;
+}
+
+
 ._title {
     display: block;
     position: relative;
@@ -24,17 +47,17 @@ html,body {
 .features {
     /* border: 2px solid green; */
     display: grid; 
-	grid-template-columns: repeat(3, 1fr);  /*colunas 3, 1 fracionário*/
+	grid-template-columns: repeat(4, 1fr);  /*colunas 3, 1 fracionário*/
 	max-width: 800px;  /*tamanho máximo total*/
 	padding: 10px;
 	margin: 0 auto;   /*alinhamento ao centro*/
-	grid-gap: 20px; /*espacamento entre as columns*/
+	grid-gap: 10px; /*espacamento entre as columns*/
 
 }
 .features  ._box:nth-child(n + 3) {   /*estilo  a partir do 3 item*/  
 	display: grid;    /*estilo grid*/
 	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 10px;
+	grid-gap: 5px;
 	align-items: center; /*align do text com a image*/
 }
 
@@ -50,24 +73,14 @@ img {
     display: block;
 }
 
-._box {
-    /* position: relative;
-    margin-left: 1rem; */
-   
-}
-
 ._box h2 {
     display: block;
     font-size: .90rem;
     text-align: center;
 
 }
-
-._box a {
-    /* border: 2px solid slategray; */
-}
-
-.__responseSaldo {
+.__responseSaldo,
+.__responseDeposito{
     color: #A52A2A;
     font-size: 1rem;
     font-weight: 500;

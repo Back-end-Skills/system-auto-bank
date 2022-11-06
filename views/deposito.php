@@ -6,7 +6,7 @@
     <section>
 
         <div class="_title">
-            <h1>Verificar Saldo </h1>
+            <h1>Realizar Depósito </h1>
         </div>
 
         <div class="saldo">
@@ -32,16 +32,19 @@
 
             <div class="_box">
                 
-                <form  action="" name="formSaldo" id="formSaldo" method="POST">
-                    <div class="__responseSaldo"></div> 
+                <form  action="" name="formDepos" id="formDepos" method="POST">
+                    <div class="__responseDeposito"></div> 
                     
                     <label for="">Código Agência</label><br>
                     <input type="text" name="codigo_agencia"  id="codigo_agencia" placeholder="Código agência" require/><br><br> 
 
                     <label for="">Código Conta</label><br>
                     <input type="text" name="codigo_conta"  id="codigo_conta" placeholder="Código Conta" require/><br><br> 
-                    
-                    <button type='submit' >Consulta</button><br><br>
+
+                    <label for="">Valor Depósito</label><br>
+                    <input type="text" name="valor_deposito"  id="valor_deposito" placeholder="valor deposito" require/><br><br> 
+
+                    <button type='submit' >Enviar</button><br><br>
                     
                 </form>
             </div>
@@ -50,4 +53,4 @@
     </section>
 
     <script src="<?php echo DIRJS.'jquery.min.js'; ?>"></script>
-    <script src="<?php echo DIRJS.'javascript.js' ; ?>"></script>
+    <script src="<?php echo DIRJS.'deposito.js' ; ?>"></script>

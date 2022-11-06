@@ -1,6 +1,8 @@
 <?php
     namespace Models;
 
+use PDO;
+
     class ModelRegister extends ModelCrud{
         
       
@@ -102,7 +104,7 @@
             $q=$this->selectDB("*", "conta", "where codigo_conta=?", array($_codigo_conta));
             $f = $q->fetch(\PDO::FETCH_ASSOC);
 
-            $dataCreatedAd=date('Y-m-d H:i:s', time());
+            $dataCreated=date('Y-m-d H:i:s', time());
 
             $this->insertDB(
                 "log",
@@ -113,10 +115,59 @@
                     $f['codigo_agencia'],
                     $f['codigo_conta'],
                     0,
-                    $dataCreatedAd
+                    $dataCreated
                 )
             );
             
+        }
+
+        #Realizará deposito
+        public function insertDeposito($arrayVarDep){
+
+            //Select db conta
+            $conta = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arrayVarDep['conta']));
+            $c_result = $conta->fetch(\PDO::FETCH_ASSOC);
+            $id_conta=$c_result['id_conta'];
+
+            $dataCreated=date('Y-m-d H:i:s', time());
+
+            $res=$this->insertDB("transacao", "?,?,?,?,?",
+                        array(
+                            0,
+                            $id_conta,
+                            'deposito em conta corrente',
+                            'credito',
+                            $dataCreated                                                                      
+                        )
+                    );
+
+            if($res->rowCount() > 0)
+            {   
+                //select db transacao
+                $transacao=$this->selectDB("*", "transacao", "where fk_conta=?", array($id_conta));
+                $result = $transacao->fetch(\PDO::FETCH_ASSOC);
+                $codigo_transacao = $result['codigo'];
+             
+                $this->insertDB("log", "?,?,?,?,?,?",  
+                        array(
+                            0,
+                            $codigo_transacao,
+                            $arrayVarDep['agencia'],
+                            $arrayVarDep['conta'],
+                            $arrayVarDep['valor_deposito'],
+                            $dataCreated
+                        )
+                    );
+
+                $saldo= $c_result['saldo'];
+                $saldo = ($saldo + $arrayVarDep['valor_deposito']);
+
+                //update conta 
+                $this->updateDB("conta", "saldo=?", "codigo_conta=?", array($saldo ,$arrayVarDep['conta']));
+                 
+                
+            }
+                
         }
 
        

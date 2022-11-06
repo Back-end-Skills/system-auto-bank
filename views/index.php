@@ -51,9 +51,9 @@
     <div class="_box">
         
 
-    <a href="<?php echo DIRPAGE.'gift-card'; ?>">
-    <img src="<?php echo DIRIMG.'gif-card.jpg'; ?>" alt="">    
-    <h2>Gift Card</h2></a>
+        <a href="<?php echo DIRPAGE.'gift-card'; ?>">
+        <img src="<?php echo DIRIMG.'gif-card.jpg'; ?>" alt="">    
+        <h2>Gift Card</h2></a>
         
     </div>
 
@@ -63,6 +63,24 @@
         <img src="<?php echo DIRIMG.'transfer.jpg'; ?>" alt="">
 
         <h2>Transferência</h2>
+        </a>
+    </div>
+
+    <div class="_box">
+        <a href="<?php echo DIRPAGE.'deposito'; ?>">
+            
+        <img src="<?php echo DIRIMG.'transfer.jpg'; ?>" alt="">
+
+        <h2>Depósito</h2>
+        </a>
+    </div>
+
+    <div class="_box">
+        <a href="<?php echo DIRPAGE.'saque'; ?>">
+            
+        <img src="<?php echo DIRIMG.'transfer.jpg'; ?>" alt="">
+
+        <h2>Saque</h2>
         </a>
     </div>
 

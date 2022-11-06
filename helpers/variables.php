@@ -91,6 +91,18 @@
         "senha"=>$senha,
         "hashSenha"=>$hashSenha
     ];
-    
+
+    if(isset($_POST['valor_deposito']))
+    { 
+        $_valor_deposito=filter_input(INPUT_POST,'valor_deposito',FILTER_SANITIZE_SPECIAL_CHARS); 
+    } else { 
+        $_valor_deposito=""; 
+    }
+
+    $arrayVarDep = [
+        "agencia"=>$_codigo_agencia,
+        "conta"=>$_codigo_conta,
+        "valor_deposito"=>$_valor_deposito
+    ];
 
     
