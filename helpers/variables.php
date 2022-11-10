@@ -1,13 +1,6 @@
 <?php
     
     $objPass=new \Classes\ClassPassword();
-
-    // if(isset($_POST['id']))
-    // { 
-    //     $Id=filter_input(INPUT_POST,'id',FILTER_SANITIZE_SPECIAL_CHARS); 
-    // } else { 
-    //     $Id=0; 
-    // }
     
     if(isset($_POST['nome']))
     {
@@ -105,4 +98,49 @@
         "valor_deposito"=>$_valor_deposito
     ];
 
+    if(isset($_POST['valor_gift']))
+    { 
+        $_valor_gift=filter_input(INPUT_POST,'valor_gift',FILTER_SANITIZE_SPECIAL_CHARS); 
+    } else { 
+        $_valor_gift=""; 
+    }
+
+    
+    if(isset($_POST['tipo']))
+    { 
+        $_tipo=filter_input(INPUT_POST,'tipo',FILTER_SANITIZE_SPECIAL_CHARS); 
+    } else { 
+        $_tipo=""; 
+    }
+
+    if(isset($_POST['stream']))
+    { 
+        $_stream=filter_input(INPUT_POST,'stream',FILTER_SANITIZE_SPECIAL_CHARS); 
+    } else { 
+        $_stream=""; 
+    }
+
+    if(isset($_POST['recarga']))
+    { 
+        $_recarga=filter_input(INPUT_POST,'recarga',FILTER_SANITIZE_SPECIAL_CHARS); 
+    } else { 
+        $_recarga=""; 
+    }
+
+    if(isset($_POST['empresa']))
+    { 
+        $_empresa=filter_input(INPUT_POST,'empresa',FILTER_SANITIZE_SPECIAL_CHARS); 
+    } else { 
+        $_empresa=""; 
+    }
+
+    $arrVarGiftCard = [
+        "agencia"=>$_codigo_agencia,
+        "conta"=>$_codigo_conta,
+        "tipo"=>$_tipo,
+        "empresa"=>$_empresa,
+        "valor_gift"=>$_valor_gift
+    ];
+
+    //var_dump($arrVarGiftCard);
     

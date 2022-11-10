@@ -7,9 +7,16 @@
     - [x] inserção table clientes
     - [x] inserção table conta
     - [x] inserção table log
+    - [x] inserção table transção
 2. Login system
     - [x] login
-    - [x] log 
+    - [x] log
+3. - [x] Consultar Saldo Conta Corrente
+    
+4. Consultar Extrato Conta Corrente
+5. Comprar Gift Card
+6. Transferência entre Contas
+ 
     
 
 

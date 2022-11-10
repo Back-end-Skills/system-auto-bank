@@ -11,7 +11,7 @@ html,body {
     width: 100vh;
 }
 
-.container {
+._container {
     
     display: flex;
     justify-content: center;
@@ -47,15 +47,15 @@ html,body {
 .features {
     /* border: 2px solid green; */
     display: grid; 
-	grid-template-columns: repeat(4, 1fr);  /*colunas 3, 1 fracionário*/
-	max-width: 800px;  /*tamanho máximo total*/
+	grid-template-columns: repeat(4, 1fr);  /*colunas 4, 1 fracionário*/
+	max-width: 800px;  
 	padding: 10px;
 	margin: 0 auto;   /*alinhamento ao centro*/
-	grid-gap: 10px; /*espacamento entre as columns*/
+	grid-gap: 10px; 
 
 }
 .features  ._box:nth-child(n + 3) {   /*estilo  a partir do 3 item*/  
-	display: grid;    /*estilo grid*/
+	display: grid;    
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 5px;
 	align-items: center; /*align do text com a image*/

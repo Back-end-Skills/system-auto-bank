@@ -21,7 +21,7 @@
             $f=$b->fetch(\PDO::FETCH_ASSOC);
             $r=$b->rowCount();
             
-            return $arrayData=[ 
+            $arrayData=[ 
                                 "_data"=>$f, 
                                 "_rows"=>$r
                               ]; 

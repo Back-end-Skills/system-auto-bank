@@ -10,7 +10,7 @@ use PDO;
         private int $codigo_conta;
         private int $saldo=0;
        
-        #Realizará a inserção no banco de dados
+
         public function insertCad($arrayVar){
 
             $this->insertDB("clientes", "?,?,?,?,?,?",
@@ -55,19 +55,79 @@ use PDO;
 
             $this->insertDB(
                 "log",
-                "?,?,?,?,?,?",
+                "?,?,?,?,?,?,?,?",
                 array(
                     0,
                     '0',
                     $this->codigo_agencia,
                     $this->codigo_conta,
+                    "",
+                    "",
                     $this->saldo,
                     $dataCreatedAd
                 )
 
             );
 
-        } 
+        }
+
+        
+        #Compra de GIFT CARD
+        public function insertGiftCard($arrVarGiftCard)
+        {
+            
+            $conta = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arrVarGiftCard['conta']));
+            $c_result = $conta->fetch(\PDO::FETCH_ASSOC);
+            $id_conta=$c_result['id_conta'];                   
+
+            $dataCreated=date('Y-m-d H:i:s', time());
+ 
+            $res=$this->insertDB("transacao", "?,?,?,?,?", array(0, $id_conta, 'compra de gift card', 'debito', $dataCreated));
+            
+            $res_select_transacao = $this->selectDB("*", "transacao", "where fk_conta=? ORDER BY codigo DESC LIMIT 1", array($id_conta));
+            $trans_result =  $res_select_transacao->fetch(\PDO::FETCH_ASSOC);
+            $codigo_transacao=$trans_result['codigo'];
+
+            $res_log = $this->insertDB("log", "?,?,?,?,?,?,?,?", 
+                                array(
+                                    0,
+                                    $codigo_transacao, 
+                                    $arrVarGiftCard['agencia'], 
+                                    $arrVarGiftCard['conta'],
+                                    $arrVarGiftCard['tipo'],
+                                    $arrVarGiftCard['empresa'],
+                                    $arrVarGiftCard['valor_gift'],
+                                    $dataCreated
+                                    )
+                                );
+
+            if($res_log->rowCount() > 0)
+            {   
+                $saldo= $c_result['saldo'];
+                $saldo = ($saldo - $arrVarGiftCard['valor_gift']);
+
+                 //update conta 
+                 $this->updateDB("conta", "saldo=?", "codigo_conta=?", array($saldo ,$arrVarGiftCard['conta']));
+            }
+
+        }
+
+        public function getIssetSaldo($arrVarGiftCard)
+        {
+            //var_dump($arrVarGiftCard);
+          
+
+            $conta = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arrVarGiftCard['conta']));
+            $conta_result = $conta->fetch(\PDO::FETCH_ASSOC);
+            $saldo=$conta_result['saldo'];
+
+            //echo $saldo;
+
+            if($arrVarGiftCard['valor_gift'] > $saldo) {
+                return   $conta->rowCount();
+            } 
+
+        }
         
         public function getIssetEmail($email){
 
