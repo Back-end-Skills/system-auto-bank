@@ -114,13 +114,17 @@ use PDO;
 
         public function getIssetSaldo($arrVarGiftCard)
         {
-            //var_dump($arrVarGiftCard);
-          
-
+            //var_dump($arrVarGiftCard);        
+           
             $conta = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arrVarGiftCard['conta']));
             $conta_result = $conta->fetch(\PDO::FETCH_ASSOC);
-            $saldo=$conta_result['saldo'];
-
+                
+            if($conta_result){
+                $saldo=$conta_result['saldo'];
+            } else {
+                $saldo="";
+            }
+         
             //echo $saldo;
 
             if($arrVarGiftCard['valor_gift'] > $saldo) {
