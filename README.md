@@ -14,7 +14,7 @@
 3. - [x] Consultar Saldo Conta Corrente
     
 4. Consultar Extrato Conta Corrente
-5. Comprar Gift Card
+5. - [x] Comprar Gift Card
 6. Transferência entre Contas
  
     
