@@ -114,6 +114,20 @@ use PDO;
 
         }
 
+        public function getSaldo($arr)
+        {
+            //var_dump($arrVarGiftCard);        
+           
+            $conta = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arr['conta']));
+            $conta_result = $conta->fetch(\PDO::FETCH_ASSOC);
+                
+            if($conta_result['saldo'] >= $arr['valor_transferencia']){
+                return $conta->rowCount();                
+            } else {
+                false;
+            }
+        }
+
         public function getIssetSaldo($arrVarGiftCard)
         {
             //var_dump($arrVarGiftCard);        
@@ -264,7 +278,7 @@ use PDO;
             if($res->rowCount() > 0)
             {   
                 //select db transacao
-                $transacao=$this->selectDB("*", "transacao", "where fk_conta=?", array($id_conta_origem));
+                $transacao=$this->selectDB("*", "transacao", "where fk_conta=? ORDER BY codigo DESC LIMIT 1", array($id_conta_origem));
                 $result = $transacao->fetch(\PDO::FETCH_ASSOC);
                 $codigo_transacao = $result['codigo'];
              
@@ -315,7 +329,7 @@ use PDO;
             if($res->rowCount() > 0)
             {   
                 //select db transacao
-                $transacao=$this->selectDB("*", "transacao", "where fk_conta=?", array($id_conta_destino));
+                $transacao=$this->selectDB("*", "transacao", "where fk_conta=? ORDER BY codigo DESC LIMIT 1 ", array($id_conta_destino));
                 $result = $transacao->fetch(\PDO::FETCH_ASSOC);
                 $codigo_transacao = $result['codigo'];
              

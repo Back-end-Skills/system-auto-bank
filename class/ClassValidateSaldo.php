@@ -91,7 +91,7 @@
                         
                     ];
 
-                    session_start(); // session start
+                    session_start(); 
                     ob_start(); // Clear buffer                  
 
                     //Gravando valores dentro da sessão aberta:                   

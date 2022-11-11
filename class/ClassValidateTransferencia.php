@@ -101,7 +101,23 @@
                 
             }
 
-        }        
+        }     
+        
+        #Validação do saldo da conta de origem
+        public function validateSaldo(array $arr)
+        {   
+            $select_conta_origem=$this->cadastro_db->getSaldo($arr);
+            //var_dump($select_conta_origem);
+
+            if($select_conta_origem > 0) 
+            {
+                return true;
+
+            } else {
+                $this->setErr('Saldo Insuficiente!');
+                return false; 
+            }
+        }
 
          
 
