@@ -43,7 +43,7 @@
                     <input type="text" name="codigo_conta"  id="codigo_conta" placeholder="Código Conta" require/><br><br> 
 
                     <label for="">Valor Depósito</label><br>
-                    <input type="text" name="valor_deposito"  id="valor_deposito" placeholder="valor deposito" require/><br><br> 
+                    <input type="text" name="valor"  id="valor" placeholder="valor deposito" require/><br><br> 
 
                     <button type='submit' >Enviar</button><br><br>
                     

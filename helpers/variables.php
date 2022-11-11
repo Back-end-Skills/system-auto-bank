@@ -52,7 +52,7 @@
         $token=bin2hex(random_bytes(64));  
     }
 
-    // Array dos POST e GET
+    
     $arrayVar=[
         "nome"=>$Nome,
         "nascimento"=>$_nascimento,
@@ -85,18 +85,21 @@
         "hashSenha"=>$hashSenha
     ];
 
-    if(isset($_POST['valor_deposito']))
+    if(isset($_POST['valor']))
     { 
-        $_valor_deposito=filter_input(INPUT_POST,'valor_deposito',FILTER_SANITIZE_SPECIAL_CHARS); 
+        $_valor=filter_input(INPUT_POST,'valor',FILTER_SANITIZE_SPECIAL_CHARS); 
     } else { 
-        $_valor_deposito=""; 
+        $_valor=null; 
     }
 
     $arrayVarDep = [
         "agencia"=>$_codigo_agencia,
         "conta"=>$_codigo_conta,
-        "valor_deposito"=>$_valor_deposito
+        "valor_deposito"=>$_valor
     ];
+
+
+    // Dados caso compra Gift Card
 
     if(isset($_POST['valor_gift']))
     { 
@@ -113,19 +116,19 @@
         $_tipo=""; 
     }
 
-    if(isset($_POST['stream']))
-    { 
-        $_stream=filter_input(INPUT_POST,'stream',FILTER_SANITIZE_SPECIAL_CHARS); 
-    } else { 
-        $_stream=""; 
-    }
+    // if(isset($_POST['stream']))
+    // { 
+    //     $_stream=filter_input(INPUT_POST,'stream',FILTER_SANITIZE_SPECIAL_CHARS); 
+    // } else { 
+    //     $_stream=""; 
+    // }
 
-    if(isset($_POST['recarga']))
-    { 
-        $_recarga=filter_input(INPUT_POST,'recarga',FILTER_SANITIZE_SPECIAL_CHARS); 
-    } else { 
-        $_recarga=""; 
-    }
+    // if(isset($_POST['recarga']))
+    // { 
+    //     $_recarga=filter_input(INPUT_POST,'recarga',FILTER_SANITIZE_SPECIAL_CHARS); 
+    // } else { 
+    //     $_recarga=""; 
+    // }
 
     if(isset($_POST['empresa']))
     { 
@@ -143,4 +146,30 @@
     ];
 
     //var_dump($arrVarGiftCard);
+
+    if(isset($_POST['codigo_agencia_destino']))
+    { 
+        $_codigo_agencia_destino=filter_input(INPUT_POST,'codigo_agencia_destino',FILTER_SANITIZE_SPECIAL_CHARS); 
+    } else { 
+        $_codigo_agencia_destino=""; 
+    }
+
+    if(isset($_POST['codigo_conta_destino']))
+    { $_codigo_conta_destino=filter_input(INPUT_POST,'codigo_conta_destino',FILTER_SANITIZE_SPECIAL_CHARS); 
+    } else { 
+        $_codigo_conta_destino=""; 
+    }
+
+
+    $arrayVarTransf = [
+        "agencia"=>$_codigo_agencia,
+        "agencia_destino"=>$_codigo_agencia_destino,
+        "conta"=>$_codigo_conta,
+        "conta_destino"=>$_codigo_conta_destino,
+        "valor_transferencia"=>$_valor
+    ];
+
+    //var_dump($arrayVarTransf);
+
+
     
