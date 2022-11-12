@@ -203,6 +203,44 @@ use PDO;
             
         }
 
+        public function getTransacao($arrTrans)
+        {
+            $b=$this->selectDB("*", "conta","where codigo_conta=?", array($arrTrans));
+            
+            $f=$b->fetch(\PDO::FETCH_ASSOC);            
+            //$r=$b->rowCount();
+
+             $id_conta = $f['id_conta'];  
+                      
+            // $query_cliente=$this->selectDB( "*", "clientes", "where cpf=?", array( $fk_cliente ) );                
+            // $fetch_cliente = $query_cliente->fetch(\PDO::FETCH_ASSOC);
+                
+            // $r_cliente = $query_cliente->rowCount();                 
+            //     return $_arrayData=[ 
+            //         "data"=>$fetch_cliente, 
+            //         "rows"=>$r_cliente,
+            //         "_data"=>$f, 
+            //         "_rows"=>$r
+            //     ]; 
+            
+            //var_dump($arrTrans);
+            $transacao=$this->selectDB("*", "transacao", "where fk_conta=?", array($id_conta));
+
+          
+            
+            if($result = $transacao->fetch(\PDO::FETCH_ASSOC))
+            {
+                return $arrTrans = [
+                    "data_trans"=>$result
+                ];
+            } else {
+                return false;
+            }
+            
+            
+          
+        }
+
         #Realizará deposito
         public function insertDeposito($arrayVarDep){
 

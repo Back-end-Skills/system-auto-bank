@@ -171,5 +171,25 @@
 
     //var_dump($arrayVarTransf);
 
+    if(isset($_POST['data_inicial']))
+    { $_data_inicial=filter_input(INPUT_POST,'data_inicial',FILTER_SANITIZE_SPECIAL_CHARS); 
+    } else { 
+        $_data_inicial=""; 
+    }
+
+    if(isset($_POST['data_final']))
+    { $_data_final=filter_input(INPUT_POST,'data_final',FILTER_SANITIZE_SPECIAL_CHARS); 
+    } else { 
+        $_data_final=""; 
+    }
+
+    $arrayVarExtrato = [        
+        "agencia"=>$_codigo_agencia,
+        "conta"=>$_codigo_conta,
+        "data_inicial"=>$_data_inicial,
+        "data_final"=>$_data_final
+    ];
+
+    //var_dump( $arrayVarExtrato);
 
     

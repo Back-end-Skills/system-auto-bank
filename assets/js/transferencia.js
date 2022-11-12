@@ -1,13 +1,10 @@
-    /*==============================================*/
-    /*          Retorno do root                     */ 
     function getRoot(){
 
         var root = window.location.protocol+"//"+document.location.hostname+"/github/system-auto-bank/";
         return root;
     }
     
-    /*==============================================*/
-    /*         Ajax do Transferencia               */ 
+
     $("#formTransf").on("submit",function(event){
         event.preventDefault();
         var dados=$(this).serialize();

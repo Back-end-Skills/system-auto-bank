@@ -4,13 +4,14 @@
     use Models\ModelLogin;
     use Models\ModelRegister;
 
-    class ClassValidateSaldo
+    class ClassValidateExtrato
     {
         private array $err = [];
         private $cadastro_db;
+        private $extrato_dados;
         
         public function __construct(){
-            $this->login = new ModelLogin();
+            $this->extrato_dados = new ModelLogin();
             $this->password=new ClassPassword();
             $this->cadastro_db=new ModelRegister();
 
@@ -35,7 +36,7 @@
             if($i==0){
                 return true;
             } else {
-                $this->setErr("Preencha todos os dados!");
+                $this->setErr("Preencha todos os dados\n");
                 return false;
             }
         }
@@ -49,7 +50,7 @@
             {
                return true; 
             } else {
-                $this->setErr("Agencia Inválida!\n");
+                $this->setErr("Agencia Inválida\n");
                 return false; 
             }
 
@@ -69,11 +70,10 @@
                 
             }
 
-        }        
+        }    
 
-
-        #Validação final do Saldo
-        public function  validateFinalSaldo($_codigo_conta)
+        #Validação final da transferencia
+        public function  validateFinalExtrato($arrayVarExtrato)
         {
             
           
@@ -88,26 +88,26 @@
             }else {
                     $arrayResponse=[
                         "retorno"=>"success",
-                        "page"=>"saldo"
-                        
-                    ];
-
+                        "page"=>"exibir-extrato"
+                                                
+                    ];   
+                    
                     session_start(); 
                     ob_start(); // Clear buffer                  
 
-                    //Gravando valores dentro da sessão aberta:                   
-                    $_SESSION["id_conta"]=$this->login->getDataUser($_codigo_conta)['_data']['id_conta'];
-                    $_SESSION["agencia"]=$this->login->getDataUser($_codigo_conta)['_data']['codigo_agencia'];
-                    $_SESSION["conta"]=$this->login->getDataUser($_codigo_conta)['_data']['codigo_conta'];
-                    $_SESSION["saldo"]=$this->login->getDataUser($_codigo_conta)['_data']['saldo'];
+                      
+                    $_SESSION["id_conta"]=$this->extrato_dados->getDataUser($arrayVarExtrato['conta'])['_data']['id_conta'];
+                    $_SESSION["agencia"]=$this->extrato_dados->getDataUser($arrayVarExtrato['conta'])['_data']['codigo_agencia'];
+                    $_SESSION["conta"]=$this->extrato_dados->getDataUser($arrayVarExtrato['conta'])['_data']['codigo_conta'];
+                    $_SESSION["saldo"]=$this->extrato_dados->getDataUser($arrayVarExtrato['conta'])['_data']['saldo'];
 
-                
+                    // Dados das transações 
+                    $_SESSION["codigo"]=$this->cadastro_db->getTransacao($arrayVarExtrato['conta'])['data_trans']['codigo'];
+                    $_SESSION["fk_conta"]=$this->cadastro_db->getTransacao($arrayVarExtrato['conta'])['data_trans']['fk_conta'];
+                                              
 
-                
-            } 
-
-            //gravar log
-            //$this->cadastro_db->isLogLogin($_codigo_conta);
+                             
+            }           
 
             return json_encode($arrayResponse);
         }
