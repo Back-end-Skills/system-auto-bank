@@ -3,7 +3,7 @@
 
 
 ## Lista de Tarefas
-1. nova conta corrente. Concluido :heavy_check_mark:
+1. nova conta corrente. Concluido
     - [x] inserção table clientes
     - [x] inserção table conta
     - [x] inserção table log
@@ -22,7 +22,7 @@
         - [ ] Exceçã 2. O sistema avalia se a conta existe
         - [ ] Exceçã 3. O sistema avalia se a senha está correta
 
-3. Consultar Saldo Conta Corrente
+3. Consultar Saldo Conta Corrente. Concluido 
     - [x] Saldo
         3.1 Validações
         - [x] Exceção 1. O sistema avalia se a agência existe  :heavy_check_mark:
