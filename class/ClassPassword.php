@@ -23,9 +23,15 @@
         #Verificar se o hash da senha está correto
         public function verifyHash($_codigo_conta, $senha)
         {
+            //echo "<br>" . $_codigo_conta."-". $senha;
             $hashDb=$this->db->getDataUser($_codigo_conta);
+            //echo "<br>";
             //var_dump($hashDb);
-            return password_verify($senha, $hashDb["data"]["senha"]);
+            //if($hashDb) 
+            //{
+                return password_verify($senha, $hashDb["data"]["senha"]);
+            //}
+           
         }
 
     }

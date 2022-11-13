@@ -210,19 +210,28 @@
         }
 
         #Grava log de login
-        public function isLogLogin($_codigo_conta){
-
-            $q=$this->selectDB("*", "conta", "where codigo_conta=?", array($_codigo_conta));
-            $f = $q->fetch(\PDO::FETCH_ASSOC);
-
+        public function isLogLogin($_codigo_conta)
+        {
             $dataCreated=date('Y-m-d H:i:s', time());
+         
+            $query=$this->selectDB("*", "conta", "where codigo_conta=?", array($_codigo_conta));
+            $f = $query->fetch(\PDO::FETCH_ASSOC);
+            $id_conta = $f['id_conta'];
+
+            $res=$this->insertDB("transacao", "?,?,?,?,?", array(0, $id_conta, 'login nova sessão', '0', $dataCreated));
+            
+            $res_select_transacao = $this->selectDB("*", "transacao", "where fk_conta=? ORDER BY codigo DESC LIMIT 1 ", array($id_conta));
+            $trans_result =  $res_select_transacao->fetch(\PDO::FETCH_ASSOC);
+            $codigo_transacao=$trans_result['codigo'];
+
+          
 
             $this->insertDB(
                 "log",
                 "?,?,?,?,?,?,?,?",
                 array(
                     0,
-                    0,
+                    $codigo_transacao,
                     $f['codigo_agencia'],
                     $f['codigo_conta'],
                     "0",

@@ -118,7 +118,7 @@
             } else {
                 if($quant < 6) 
                 {
-                    $this->setErro("Digite pelo menos 6 dígitos!");
+                    $this->setErro("Senha Inválida!\nDigite pelo menos 6 dígitos!");
                     return false;
                 } else {
                 

@@ -48,11 +48,12 @@
     </style>   
 </head>
 <body>
-<div class="container">
 
-      <h2>Bem - Vindo ! Dashoboard do Cliente. </h2>
-      <h1>Home</h1>
-       
+    <div class="container">
+
+        <h4>Cliente Autenticado Com Sucesso!</h4>       
+        <h2>Bem - Vindo ! Dashboard do Cliente. </h2>
+
     </div>
     
 </body>
