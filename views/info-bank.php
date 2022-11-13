@@ -17,7 +17,7 @@
     <section>
 
         <div class="_title">
-            <h1>Dados da Sua Conta</h1>
+            <h1>Dados da Sua Nova Conta</h1>
         </div>
 
         <div>
@@ -28,8 +28,8 @@
             <h2>Sua Agência</h2>
              <p> <span><?php echo $dados_conta['codigo_agencia']; ?></span></p>
 
-            <p>Utilize sua conta e agencia, juntamente com sua senha para realizar <a href="<?php echo 'login'; ?>"> login </a> </p>
-            <a href="<?php echo '/'; ?>"> Inicial </a>  
+            <p>Utilize sua conta e agencia, juntamente com sua senha para realizar <a href="<?php echo DIRPAGE . 'login'; ?>"> login </a> </p>
+            <a href="<?php echo DIRPAGE . ''; ?>"> Inicial </a>  
  
 
            

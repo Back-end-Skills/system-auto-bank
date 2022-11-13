@@ -1,18 +1,14 @@
 <?php
     namespace Models;
 
-use PDO;
-
-    class ModelRegister extends ModelCrud{
-        
-      
+    class ModelRegister extends ModelCrud
+    {
         private int $codigo_agencia;
         private int $codigo_conta;
         private int $saldo=0;
        
-
-        public function insertCad($arrayVar){
-
+        public function insertCad($arrayVar)
+        {
             $this->insertDB("clientes", "?,?,?,?,?,?",
                         array(
                             0,
@@ -25,6 +21,7 @@ use PDO;
                     );
             
             $this->insConta($arrayVar);
+            $this->insTransacao($arrayVar);
             $this->insLog($arrayVar);
                 
         }
@@ -51,26 +48,60 @@ use PDO;
         }
 
         #log
-        public function insLog($arrayVar){
+        public function insLog($arrayVar)
+        {
+            $query_transacao=$this->selectDB("*", "transacao", "ORDER BY codigo DESC",array());
+
+            if($result =  $query_transacao->fetch(\PDO::FETCH_ASSOC))
+            {
+                $codigo_transacao = $result['codigo'];
+                $dataCreatedAd=date('Y-m-d H:i:s', time());
+
+                $this->insertDB(
+                    "log",
+                    "?,?,?,?,?,?,?,?",
+                    array(
+                        0,
+                        $codigo_transacao,
+                        $this->codigo_agencia,
+                        $this->codigo_conta,
+                        "0",
+                        "0",
+                        $this->saldo,
+                        $dataCreatedAd
+                    )
+
+                );
+            }
             
-            $dataCreatedAd=date('Y-m-d H:i:s', time());
+           
+        }
 
-            $this->insertDB(
-                "log",
-                "?,?,?,?,?,?,?,?",
-                array(
-                    0,
-                    '0',
-                    $this->codigo_agencia,
-                    $this->codigo_conta,
-                    "",
-                    "",
-                    $this->saldo,
-                    $dataCreatedAd
-                )
+        #Transacao para gravaçaõ de log da criação da conta
+        public function insTransacao($arrayVar)
+        {
+            $query_conta=$this->selectDB("*", "conta", "ORDER BY id_conta DESC",array());
 
-            );
+            if($result=$query_conta->fetch(\PDO::FETCH_ASSOC))
+            {
+                $id_conta = $result['id_conta'];
+                $dataCreatedAd=date('Y-m-d H:i:s', time());
 
+                $this->insertDB("transacao", "?,?,?,?,?",
+                            array(
+                                0,
+                                $id_conta,
+                                "abetura de conta corrente",
+                                "0",
+                                $dataCreatedAd
+                            )
+                        );
+            } else  {
+                return false; 
+            }
+
+            
+           
         }
 
         
@@ -210,23 +241,10 @@ use PDO;
             $f=$b->fetch(\PDO::FETCH_ASSOC);            
             //$r=$b->rowCount();
 
-             $id_conta = $f['id_conta'];  
-                      
-            // $query_cliente=$this->selectDB( "*", "clientes", "where cpf=?", array( $fk_cliente ) );                
-            // $fetch_cliente = $query_cliente->fetch(\PDO::FETCH_ASSOC);
-                
-            // $r_cliente = $query_cliente->rowCount();                 
-            //     return $_arrayData=[ 
-            //         "data"=>$fetch_cliente, 
-            //         "rows"=>$r_cliente,
-            //         "_data"=>$f, 
-            //         "_rows"=>$r
-            //     ]; 
-            
+            $id_conta = $f['id_conta'];  
+                    
             //var_dump($arrTrans);
             $transacao=$this->selectDB("*", "transacao", "where fk_conta=?", array($id_conta));
-
-          
             
             if($result = $transacao->fetch(\PDO::FETCH_ASSOC))
             {
@@ -237,8 +255,6 @@ use PDO;
                 return false;
             }
             
-            
-          
         }
 
         #Realizará deposito
