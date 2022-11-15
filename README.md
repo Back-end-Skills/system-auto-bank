@@ -3,6 +3,20 @@
 <p> </p>     
 <p align="justify"> Desafio Dev Back End | W3 </p>
 
+## Como executar este project 
+1 - Use os campos do arquivo variables para criar suas tables
+2 - Faça as Instalações: :books:
+    - [PHP 8.1](https://www.php.net/)
+    - [COMPOSER](https://getcomposer.org)
+    - [XAMPP](https://www.apachefriends.org/pt_br/index.html)
+3 - abra a pasta do project e execute:
+`composer update`
+isto irá configurar o arquivo composer.json
+
+4 - Não esqueça de verificar os arquivos abaixos, e fazer os configurações necessário. 
+    4.1 htaccess
+    4.2 config
+    4.3 e os arquivos que se encontram no diretório js
 
 ## Lista de Tarefas
 1. nova conta corrente. Concluido
