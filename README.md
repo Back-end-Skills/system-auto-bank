@@ -5,7 +5,7 @@
 
 ## Como executar este project 
 <p>1 - Use os campos do arquivo variables para criar suas tables</p>
-<p>2 - Faça as Instalações: :books: </p>
+2 - Faça as Instalações: :books: 
     - [PHP 8.1](https://www.php.net/)
     - [COMPOSER](https://getcomposer.org)
     - [XAMPP](https://www.apachefriends.org/pt_br/index.html)
