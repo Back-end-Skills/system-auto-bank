@@ -5,15 +5,17 @@
 
 ## Como executar este project 
 <p>1 - Use os campos do arquivo variables para criar suas tables</p>
-<p>2 - Faça as Instalações: :books: </p> 
+
+### 2 - Faça as Instalações: :books: 
 - [PHP 8.1](https://www.php.net/)
 - [COMPOSER](https://getcomposer.org)
 - [XAMPP](https://www.apachefriends.org/pt_br/index.html)
-<p>3 - abra a pasta do project e execute:
+
+### 3 - abra a pasta do project e execute:
 `composer update`
 isto irá configurar o arquivo composer.json </p>
 
-<p>4 - Não esqueça de verificar os arquivos abaixos, e fazer os configurações necessário. <br>
+### 4 - Não esqueça de verificar os arquivos abaixos, e fazer os configurações necessário.
     4.1 htaccess </br>
     4.2 config </br>
     4.3 e os arquivos que se encontram no diretório js</p>
@@ -52,6 +54,10 @@ isto irá configurar o arquivo composer.json </p>
 
 
 4. Consultar Extrato Conta Corrente. Em desenvolvimento :warning: 
+    - [x] Exceção 1. O sistema avalia se a agência existe  :heavy_check_mark:
+    - [x] Exceção 2. O sistema avalia se a agência conta corrente  :heavy_check_mark:
+    - [x] Exceção 3. O sistema avalia se as datas inicial e final são válidas 
+
 
 5. Comprar Gift Card: Concluído
     - [x] Exceção 1. O sistema avalia se a agência existe  :heavy_check_mark:

@@ -190,6 +190,6 @@
         "data_final"=>$_data_final
     ];
 
-    //var_dump( $arrayVarExtrato);
+    var_dump( $arrayVarExtrato);
 
     

@@ -50,7 +50,7 @@
             {
                return true; 
             } else {
-                $this->setErr("Agencia Inválida\n");
+                $this->setErr("Agencia Inválida!\n");
                 return false; 
             }
 
