@@ -1,4 +1,6 @@
-<h1 align="center"> System Auto Bank </h1>
+<h1 align="center"> System Auto Bank Em PHP</h1>
+<img src="php.jpeg"/> 
+<p> </p>     
 <p align="justify"> Desafio Dev Back End | W3 </p>
 
 
@@ -29,20 +31,26 @@
 
 
 3. Consultar Saldo Conta Corrente. Concluido 
-
-    - [x] Saldo
     
-        3.1 Validações
-        - [x] Exceção 1. O sistema avalia se a agência existe  :heavy_check_mark:
-        - [x] Exceção 2. O sistema avalia se a agência conta corrente  :heavy_check_mark:
+    3.1 Validações
+    - [x] Exceção 1. O sistema avalia se a agência existe  :heavy_check_mark:
+    - [x] Exceção 2. O sistema avalia se a agência conta corrente  :heavy_check_mark:
 
-    
+
 4. Consultar Extrato Conta Corrente. Em desenvolvimento :warning: 
 
-5. Comprar Gift Card Em desenvolvimento :warning:
-    - [x]  . 
+5. Comprar Gift Card: Concluído
+    - [x] Exceção 1. O sistema avalia se a agência existe  :heavy_check_mark:
+    - [x] Exceção 2. O sistema avalia se a agência conta corrente  :heavy_check_mark:
+    - [x] Exceção 3. O sistema avalia se a conta corrente tem saldo suficiente  :heavy_check_mark:
 
-6. Transferência entre Contas. Em desenvolvimento :warning:
+
+6. Transferência entre Contas. Concluído
+    - [x] Exceção 1. O sistema avalia se a agência de origem existe  :heavy_check_mark:
+    - [x] Exceção 2. O sistema avalia se a conta de origem existe  :heavy_check_mark:
+    - [x] Exceção 3. O sistema avalia se a agência de destino existe  :heavy_check_mark:
+    - [x] Exceção 4. O sistema avalia se a conta de destino existe  :heavy_check_mark:
+    - [x] Exceção 5. O sistema avalia se a conta de origem possue saldo suficiente :heavy_check_mark:
  
     
 

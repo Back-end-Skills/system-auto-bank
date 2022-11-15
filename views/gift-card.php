@@ -1,8 +1,6 @@
 <?php include_once './include/head.php'; ?>
 <?php include_once './include/header.php'; ?>
 
-   
-
     <section class="_container">
 
     
@@ -55,10 +53,7 @@
                     </select>
                 </div>
 
-                <div class="_gift-valor">
-                    <label for="">valor </label><br>
-                    <input type="text" name="valor_gift"><br>
-                </div>
+              
 
                 <div class="_dados-conta">
                     <label for="">agencia </label><br>
@@ -66,6 +61,11 @@
 
                     <label for="">Conta</label><br>
                     <input type="text" name="codigo_conta"><br>
+                </div>
+                
+                <div class="_gift-valor">
+                    <label for="">valor </label><br>
+                    <input type="text" name="valor_gift"><br>
                 </div>
 
                 <button type="submit">Comprar</button>
@@ -85,32 +85,32 @@
            
            if (this.value == 'stream')
            {
-               document.getElementById('_tipo-stream').style.display = 'block';  
+                document.getElementById('_tipo-stream').style.display = 'block';  
           
-               let name_recarga =document.getElementById('recarga').removeAttribute("name");
-               let name_game =document.getElementById('game').removeAttribute("name");                
+                document.getElementById('recarga').removeAttribute("name");
+                document.getElementById('game').removeAttribute("name");                
                
            } else {
-            document.getElementById('_tipo-stream').style.display = 'none';
+                document.getElementById('_tipo-stream').style.display = 'none';
            }
 
            if (this.value == 'recarga')
            {
                document.getElementById('_tipo-recarga').style.display = 'block';  
 
-               let name_recarga =document.getElementById('stream').removeAttribute("name");
-               let name_game =document.getElementById('game').removeAttribute("name");
+               document.getElementById('stream').removeAttribute("name");
+               document.getElementById('game').removeAttribute("name");
 
            }  else {
-            document.getElementById('_tipo-recarga').style.display = 'none';  
+                document.getElementById('_tipo-recarga').style.display = 'none';  
            }
 
            if (this.value == 'game')
            {
                document.getElementById('_tipo-game').style.display = 'block';  
 
-               let name_recarga =document.getElementById('stream').removeAttribute("name");
-               let name_game =document.getElementById('recarga').removeAttribute("name");
+               document.getElementById('stream').removeAttribute("name");
+               document.getElementById('recarga').removeAttribute("name");
 
            }  else {
                 document.getElementById('_tipo-game').style.display = 'none';  

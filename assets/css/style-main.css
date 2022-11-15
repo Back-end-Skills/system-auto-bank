@@ -16,7 +16,7 @@ html,body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid yellowgreen;
+    /* border: 3px solid yellowgreen; */
     width: auto;
 }
 
@@ -30,7 +30,7 @@ html,body {
     width: 270px;
     height: 200px;
     margin: 16px;
-    border: 1px solid rebeccapurple;
+    /* border: 1px solid rebeccapurple; */
 }
 
 
@@ -64,7 +64,7 @@ html,body {
 .new-account {
 	grid-column: 1;  /*quero na primeira column*/
 	grid-row: 2 / 3;  /* a partir da 2linha até  a 5 linhas */
-	border-top: 10px solid tomato;
+	/* border-top: 10px solid tomato; */
     text-align: center; 
 }
 

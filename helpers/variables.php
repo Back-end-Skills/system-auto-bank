@@ -145,7 +145,7 @@
         "valor_gift"=>$_valor_gift
     ];
 
-    //var_dump($arrVarGiftCard);
+    ///var_dump($arrVarGiftCard);
 
     if(isset($_POST['codigo_agencia_destino']))
     { 

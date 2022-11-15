@@ -150,12 +150,13 @@
             //var_dump($arrVarGiftCard);        
            
             $conta = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arr['conta']));
-            $conta_result = $conta->fetch(\PDO::FETCH_ASSOC);
-                
-            if($conta_result['saldo'] >= $arr['valor_transferencia']){
-                return $conta->rowCount();                
+            if($conta_result = $conta->fetch(\PDO::FETCH_ASSOC))
+            {                
+                if($conta_result['saldo'] >= $arr['valor_transferencia']){
+                    return $conta->rowCount();                
+                } 
             } else {
-                false;
+                    false;
             }
         }
 
