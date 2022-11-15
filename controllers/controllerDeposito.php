@@ -1,10 +1,10 @@
 <?php
-    $validate=new Classes\ClassValidateDeposito();
+    $_validate=new Classes\ClassValidate();
     
-    $validate->validateFields($_POST);
-    $validate->validateAgencia($_codigo_agencia);                
-    $validate->validateConta($_codigo_conta);                      
+    $_validate->validateFields($_POST);
+    $_validate->validateAgencia($_codigo_agencia);                
+    $_validate->validateConta($_codigo_conta);                      
        
-    echo $validate->validateFinalDeposito($arrayVarDep);
+    echo $_validate->validateFinalDeposito($arrayVarDep);
     
     

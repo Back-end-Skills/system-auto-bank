@@ -7,10 +7,6 @@
 
         <div class="_title">
             <h1>Verificar Saldo </h1>
-        </div>
-
-        <div class="saldo">
-            
             <p><?php
                 if(isset($_SESSION["id_conta"])) 
                 {
@@ -19,13 +15,18 @@
                     
                     $saldo =  $res_real;
 
-                    echo "<h3>Seu saldo é: R$</h3> ".$saldo;
+                    echo "<h3>Seu saldo é: R$={$saldo} </h3>  ";
                     
                     unset($_SESSION['id_conta']);
                 } else {
                     echo "";
                 }
             ?></p>
+        </div>
+
+        <div class="saldo">
+            
+         
         </div>
 
         <div class="features">

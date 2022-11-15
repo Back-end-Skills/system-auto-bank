@@ -16,9 +16,9 @@
 isto irá configurar o arquivo composer.json </p>
 
 ### 4 - Não esqueça de verificar os arquivos abaixos, e fazer os configurações necessário.
-    4.1 htaccess </br>
-    4.2 config </br>
-    4.3 e os arquivos que se encontram no diretório js</p>
+    4.1 htaccess 
+    4.2 config 
+    4.3 e os arquivos que se encontram no diretório js
 
 ## Lista de Tarefas
 1. nova conta corrente. Concluido
@@ -75,5 +75,8 @@ isto irá configurar o arquivo composer.json </p>
     
 
 
-
+### 2 - Principais Referências: :books: 
+- [Web Design Em Foco](https://www.webdesignemfoco.com//)
+- [Celke](https://celke.com.br/)
+- [PHP DOCS](https://www.php.net/manual/pt_BR/)
  

@@ -268,61 +268,56 @@
         }
 
         #Realizará deposito
-        public function insertDeposito($arrayVarDep){
-
-            //Select db conta
+        public function insertDeposito($arrayVarDep)
+        {   
             $conta = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arrayVarDep['conta']));
-            $c_result = $conta->fetch(\PDO::FETCH_ASSOC);
-            $id_conta=$c_result['id_conta'];
+            
+            if($c_result = $conta->fetch(\PDO::FETCH_ASSOC))
+            {
+            
+                $id_conta=$c_result['id_conta'];
 
-            $dataCreated=date('Y-m-d H:i:s', time());
+                $dataCreated=date('Y-m-d H:i:s', time());
 
-            $res=$this->insertDB("transacao", "?,?,?,?,?",
-                        array(
-                            0,
-                            $id_conta,
-                            'deposito em conta corrente',
-                            'credito',
-                            $dataCreated                                                                      
-                        )
-                    );
+                $res=$this->insertDB("transacao", "?,?,?,?,?",
+                            array( 0, $id_conta, 'deposito em conta corrente', 'credito', $dataCreated ));
 
-            if($res->rowCount() > 0)
-            {   
-                //select db transacao
-                $transacao=$this->selectDB("*", "transacao", "where fk_conta=?", array($id_conta));
-                $result = $transacao->fetch(\PDO::FETCH_ASSOC);
-                $codigo_transacao = $result['codigo'];
-             
-                $this->insertDB("log", "?,?,?,?,?,?,?,?",  
-                        array(
-                            0,
-                            $codigo_transacao,
-                            $arrayVarDep['agencia'],
-                            $arrayVarDep['conta'],
-                            "0",
-                            "0",
-                            $arrayVarDep['valor_deposito'],
-                            $dataCreated
-                        )
-                    );
-
-                $saldo= $c_result['saldo'];
-                $saldo = ($saldo + $arrayVarDep['valor_deposito']);
-
-                //update conta 
-                $this->updateDB("conta", "saldo=?", "codigo_conta=?", array($saldo ,$arrayVarDep['conta']));
-                 
-                
+                        if($res->rowCount() > 0)
+                        {   
+                           
+                            $transacao=$this->selectDB("*", "transacao", "where fk_conta=?", array($id_conta));
+                            $result = $transacao->fetch(\PDO::FETCH_ASSOC);
+                            $codigo_transacao = $result['codigo'];
+                         
+                            $this->insertDB("log", "?,?,?,?,?,?,?,?",  
+                                    array(
+                                        0,
+                                        $codigo_transacao,
+                                        $arrayVarDep['agencia'],
+                                        $arrayVarDep['conta'],
+                                        "0",
+                                        "0",
+                                        $arrayVarDep['valor_deposito'],
+                                        $dataCreated
+                                    )
+                                );
+            
+                            $saldo= $c_result['saldo'];
+                            $saldo = ($saldo + $arrayVarDep['valor_deposito']);
+                           
+                            $this->updateDB("conta", "saldo=?", "codigo_conta=?", array($saldo ,$arrayVarDep['conta']));
+                            
+                        }
             }
+
+          
                 
         }
 
         public function insertDebito($arr){
-               //Select db conta
-
+             
                //return  var_dump($arr);
-                  //Select db conta
+            
             $conta_origem = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arr['conta']));
             $result_conta_origem = $conta_origem->fetch(\PDO::FETCH_ASSOC);
             $id_conta_origem = $result_conta_origem['id_conta'];
@@ -373,7 +368,7 @@
         #Realizará deposito na conta de destino
         public function insertTransf($arrayVarTransf){
 
-            //Select db conta
+          
             $conta_destino = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arrayVarTransf['conta_destino']));
             $result_conta = $conta_destino->fetch(\PDO::FETCH_ASSOC);
             $id_conta_destino = $result_conta['id_conta'];
@@ -392,7 +387,7 @@
 
             if($res->rowCount() > 0)
             {   
-                //select db transacao
+             
                 $transacao=$this->selectDB("*", "transacao", "where fk_conta=? ORDER BY codigo DESC LIMIT 1 ", array($id_conta_destino));
                 $result = $transacao->fetch(\PDO::FETCH_ASSOC);
                 $codigo_transacao = $result['codigo'];
@@ -413,7 +408,7 @@
                 $saldo= $result_conta['saldo'];
                 $saldo = ($saldo + $arrayVarTransf['valor_transferencia']);
 
-                //update conta destino
+           
                 $this->updateDB("conta", "saldo=?", "codigo_conta=?", array($saldo , $arrayVarTransf['conta_destino']));
 
                 $this->insertDebito($arrayVarTransf);

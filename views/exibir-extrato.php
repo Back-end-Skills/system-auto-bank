@@ -7,11 +7,12 @@
     //session_start(); 
     $id_conta = $_SESSION["id_conta"];
 
-    var_dump($arrayVarExtrato);
+    //var_dump($arrayVarExtrato);
 
     $crud = new ModelCrud();
 
-    $query = $crud->selectDB("*", "transacao", "WHERE fk_conta=?, BETWEEN data_create=? AND data_create=?", array($id_conta));
+    // $query = $crud->selectDB("*", "transacao", "WHERE fk_conta=?, BETWEEN data_create=? AND data_create=?", array($id_conta));
+    $query = $crud->selectDB("*", "transacao", "WHERE fk_conta=?", array($id_conta));
     echo "<h1>Exibir Extrato de ".$_SESSION["conta"]."</h1> <br>";
     while($query_row = $query->fetch(\PDO::FETCH_ASSOC))
     {

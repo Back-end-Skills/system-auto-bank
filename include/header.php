@@ -1,7 +1,7 @@
 <header>
         <nav>
             <ul>
-                <li><a href="<?php echo DIRPAGE . '/'; ?>">Home</a></li>
+                <li><a href="<?php echo DIRPAGE . ''; ?>">Home</a></li>
                 <li><a href="<?php echo DIRPAGE . 'nova-conta-corrente'; ?>">nova conta</a></li>
                 <li><a href="<?php echo DIRPAGE . 'login'; ?>">Entrar</a></li>
                 <li><a href="<?php echo DIRPAGE . 'saldo'; ?>">saldo</a></li>

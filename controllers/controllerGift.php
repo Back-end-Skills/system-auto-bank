@@ -1,5 +1,5 @@
 <?php
-    $validate=new Classes\ClassValidateGift();
+    $validate=new Classes\ClassValidate();
     
     $validate->validateFields($_POST);
     $validate->validateAgencia($_codigo_agencia);                
