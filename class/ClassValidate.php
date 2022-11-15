@@ -5,17 +5,14 @@
     use Models\ModelLogin;
     use Classes\ClassPassword;
 
-   
-    class ClassValidate{
-
+    class ClassValidate
+    {
         private $erro=[]; 
         private $cadastro;
         private $extrato_dados;
         //private $password;
         private $login;       
-        //private $tentativas;
-       
-        //composições
+
         public function __construct()
         {
             $this->cadastro=new ModelRegister(); 
@@ -25,15 +22,9 @@
          
         }
 
-        public function getErro()
-        {   
-            return $this->erro;  
-        }
+        public function getErro() { return $this->erro; }
 
-        public function setErro($erro)
-        {  
-            array_push($this->erro,$erro);  
-        }
+        public function setErro($erro) { array_push($this->erro,$erro); }
 
         #Validar se os campos desejados foram preenchidos
         public function validateFields($par){
@@ -43,43 +34,25 @@
                 if(empty($value)){ $i++;  }
             }
 
-            if($i==0){  
-                return true;  
-            } else{ 
-                $this->setErro("Preencha todos os dados!"); 
-                return false;  
-            }
+            if($i==0){ return true; } 
+            else{ $this->setErro("Preencha todos os dados!"); return false; }
 
         }
 
-        #Validação se o dado é um email
-        public function validateEmail($par){
-            
-            if(filter_var($par, FILTER_VALIDATE_EMAIL)){ 
-                return true;  
-            } else{ 
-                $this->setErro("Email inválido!"); 
-                return false;     
-            }
-        
+        public function validateEmail($par)
+        {
+            if(filter_var($par, FILTER_VALIDATE_EMAIL)){ return true; } 
+            else{ $this->setErro("Email inválido!"); return false; }
         }
 
         #Validar se o email existe no banco de dados (action null para cadastro)
-        public function validateIssetEmail($email, $action=null){
-
+        public function validateIssetEmail($email, $action=null)
+        {
             $b=$this->cadastro->getIssetEmail($email);
-
-            if($action==null){
-
-                if($b > 0)
-                { 
-                    $this->setErro("Email já cadastrado!");
-                    return false; 
-                } else { 
-                    return true; 
-                }
-
-            
+            if($action==null)
+            {
+                if($b > 0) { $this->setErro("Email já cadastrado!"); return false; } 
+                else { return true; }
             } 
         
         }
@@ -87,52 +60,31 @@
         #Validação data nasciemento > 17 
         public function validateData($nascimento)
         {
-    
-            $data = new \DateTime($nascimento );
-           
+            $data = new \DateTime($nascimento );           
             $idade = $data->diff( new \DateTime( date('Y-m-d')));
-            //var_dump($idade);
             $_idade = $idade->format( '%Y anos' );
  
-            if($_idade > 17) 
-            {
-                return true;
-            } else {
-                $this->setErro("Menor de 18 anos! \n Não permitido abertura de conta");
-            }
+            if($_idade > 17) { return true; } 
+            else { $this->setErro("Menor de 18 anos! \n Não permitido abertura de conta"); }
         }
 
-         #validacao agencia
-         public function validateAgencia($_codigo_agencia)
-         {
+        public function validateAgencia($_codigo_agencia)
+        {
             $res_agencia = $this->cadastro->getIssetAgencia($_codigo_agencia);
-            //var_dump( $res_agencia);
  
-            if($res_agencia > 0 )
-            {   return true;
-                 
-            } else {
-                $this->setErro("Agencia Inválida!\n");
-                return false;
-            }
+            if($res_agencia > 0 ) {   return true; } 
+            else { $this->setErro("Agencia Inválida!\n"); return false; }
  
-         } 
+        } 
  
-         #validação conta
-         public function validateConta($_codigo_conta)
-         {
-             $res_conta = $this->cadastro->getIssetConta($_codigo_conta);
+        public function validateConta($_codigo_conta)
+        {
+            $res_conta = $this->cadastro->getIssetConta($_codigo_conta);
  
-             if($res_conta > 0 )
-             {
-                return true;
-             } else {
-                $this->setErro("Conta Inválida!\n");
-                return false; 
-                 
-             }
+            if($res_conta > 0 ) { return true; } 
+            else { $this->setErro("Conta Inválida!\n"); return false; }
  
-         }    
+        }    
 
         public function validatePassword(string $input)
         {
@@ -164,49 +116,32 @@
          
         }
 
-        #Validação final do cadastro
         public function validateFinalCad($arrayVar)
         {
             if(count($this->getErro()) > 0)
             {
-                $arrayResponse=[ 
-                    "retorno"=>"erro",
-                    "erros"=>$this->getErro()
-                ];
+                $arrayResponse=[ "retorno"=>"erro", "erros"=>$this->getErro() ];
             }else{
-                $arrayResponse=[
-                    "retorno"=>"success",
-                    "erros"=>null
-                ];
+                $arrayResponse=[ "retorno"=>"success", "erros"=>null ];
                 $this->cadastro->insertCad($arrayVar);
             }
             return json_encode($arrayResponse);
         }
 
-        #Validate Final Deposito
         public function validateFinalDeposito($arrayVarDep)
         {
             
             if(count($this->getErro()) > 0)
             {
-                $arrayResponse=[
-                    "retorno"=>"erro",
-                    "erros"=>$this->getErro()
-                ];
-
-            }else {
-                    $arrayResponse=[
-                        "retorno"=>"success",
-                                                
-                    ];   
+                $arrayResponse=[ "retorno"=>"erro", "erros"=>$this->getErro() ];
+            } else {
+                $arrayResponse=[ "retorno"=>"success", ];   
                     
-                    $this->cadastro->insertDeposito($arrayVarDep);            
+                $this->cadastro->insertDeposito($arrayVarDep);            
             }           
-
             return json_encode($arrayResponse);
         }
 
-        #Validacao final extrato
         public function  validateFinalExtrato($arrayVarExtrato)
         {
             
@@ -227,7 +162,7 @@
                     ];   
                     
                     session_start(); 
-                    ob_start(); // Clear buffer                  
+                    ob_start();                 
                       
                     $_SESSION["id_conta"]=$this->extrato_dados->getDataUser($arrayVarExtrato['conta'])['_data']['id_conta'];
                     $_SESSION["agencia"]=$this->extrato_dados->getDataUser($arrayVarExtrato['conta'])['_data']['codigo_agencia'];
@@ -243,19 +178,18 @@
             return json_encode($arrayResponse);
         }
 
-         #Validação final do Saldo
-         public function  validateFinalSaldo($_codigo_conta)
-         {
+        public function  validateFinalSaldo($_codigo_conta)
+        {
              
-             if(count($this->getErro()) > 0)
-             {
+            if(count($this->getErro()) > 0)
+            {
                  $arrayResponse=[
                      "retorno"=>"erro",
                      "erros"=>$this->getErro()
                  ];
  
                 
-             }else {
+            }  else {
                      $arrayResponse=[
                          "retorno"=>"success",
                          "page"=>"saldo"
@@ -264,22 +198,20 @@
  
                      session_start(); 
                      ob_start(); 
-
-                     //Gravando valores dentro da sessão aberta:                   
+                 
                      $_SESSION["id_conta"]=$this->login->getDataUser($_codigo_conta)['_data']['id_conta'];
                      $_SESSION["agencia"]=$this->login->getDataUser($_codigo_conta)['_data']['codigo_agencia'];
                      $_SESSION["conta"]=$this->login->getDataUser($_codigo_conta)['_data']['codigo_conta'];
                      $_SESSION["saldo"]=$this->login->getDataUser($_codigo_conta)['_data']['saldo'];
    
-             } 
+            } 
  
              //gravar log
              //$this->cadastro_db->isLogLogin($_codigo_conta);
  
-             return json_encode($arrayResponse);
-         }
+            return json_encode($arrayResponse);
+        }
 
-        
         public function validateSaldoGiftCard($arrVarGiftCard)
         {
             $res_conta = $this->cadastro->getIssetSaldo($arrVarGiftCard);
@@ -287,7 +219,6 @@
             if($res_conta > 0 ) { $this->setErro("Saldo Conta Insuficiente!\n"); return false; } 
             else { return true; }
         }        
-  
        
         public function  validateFinalGift($arrVarGiftCard)
         {
@@ -302,7 +233,4 @@
             return json_encode($arrayResponse);
         }
         
-
-
-
     }

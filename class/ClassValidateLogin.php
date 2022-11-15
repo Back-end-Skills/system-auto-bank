@@ -66,10 +66,10 @@
             }
         }
 
-        #Verificação da senha digitada com o hash no banco de dados
+       
         public function validateSenha($_codigo_conta, $senha)
         {
-            //echo $_codigo_conta."-".$senha;
+           
             if($this->password->verifyHash($_codigo_conta, $senha))
             {   
                 return true;  
@@ -80,7 +80,7 @@
            
         }
 
-        #Validação final do login
+    
         public function validateFinalLogin($_codigo_conta)
         {
 
@@ -98,7 +98,7 @@
                         "page"=>"home"
                         
                     ];
-                       //gravar log
+                       
             $this->cadastro_db->isLogLogin($_codigo_conta);
                 
             } 
