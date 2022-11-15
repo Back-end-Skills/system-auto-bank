@@ -5,10 +5,10 @@
 
 ## Como executar este project 
 <p>1 - Use os campos do arquivo variables para criar suas tables</p>
-2 - Faça as Instalações: :books: 
-    - [PHP 8.1](https://www.php.net/)
-    - [COMPOSER](https://getcomposer.org)
-    - [XAMPP](https://www.apachefriends.org/pt_br/index.html)
+<p>2 - Faça as Instalações: :books: </p> 
+- [PHP 8.1](https://www.php.net/)
+- [COMPOSER](https://getcomposer.org)
+- [XAMPP](https://www.apachefriends.org/pt_br/index.html)
 <p>3 - abra a pasta do project e execute:
 `composer update`
 isto irá configurar o arquivo composer.json </p>
