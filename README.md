@@ -41,7 +41,7 @@ isto irá configurar o arquivo composer.json </p>
     - [x] inserção table transção
 
     - 2.1 Validações
-        - [ ] Exceçã 1. O sistema avalia se a agência existe :heavy_check_mark:
+        - [x] Exceçã 1. O sistema avalia se a agência existe :heavy_check_mark:
         - [ ] Exceçã 2. O sistema avalia se a conta existe
         - [ ] Exceçã 3. O sistema avalia se a senha está correta
 
