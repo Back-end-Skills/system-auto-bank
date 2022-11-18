@@ -109,9 +109,7 @@
                     } else {
                         return true;
                     }
-                
                 }
-               
             } 
          
         }
@@ -145,7 +143,6 @@
         public function  validateFinalExtrato($arrayVarExtrato)
         {
             
-          
             if(count($this->getErro()) > 0)
             {
                 $arrayResponse=[
@@ -206,8 +203,7 @@
    
             } 
  
-             //gravar log
-             //$this->cadastro_db->isLogLogin($_codigo_conta);
+            //$this->cadastro_db->isLogLogin($_codigo_conta);
  
             return json_encode($arrayResponse);
         }

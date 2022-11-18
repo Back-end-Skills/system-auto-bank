@@ -1,13 +1,9 @@
-    /*==============================================*/
-    /*          Retorno do root                     */ 
-    function getRoot(){
-
+    function getRoot()
+    {
         var root = window.location.protocol+"//"+document.location.hostname+"/github/system-auto-bank/";
         return root;
     }
     
-    /*==============================================*/
-    /*      Ajax do formulário de cadastro          */ 
     $("#formCadastro").on("submit",function(event){
         event.preventDefault();
         var dados=$(this).serialize();
@@ -21,8 +17,8 @@
                 
                 $('.retornoCad').empty();
 
-                if(response.retorno == 'erro'){
-
+                if(response.retorno == 'erro')
+                {
                     $.each(response.erros,function(key,value){
                     
                         $('.retornoCad').append(value+'');
@@ -39,9 +35,7 @@
             }
         });
     });
-
-    /*==============================================*/
-    /*         Ajax do formulário de login          */ 
+ 
     $("#formLogin").on("submit",function(event){
         event.preventDefault();
         var dados=$(this).serialize();
@@ -57,12 +51,6 @@
                 {
                     window.location.href=response.page;
                 } else {
-                    // if(response.tentativas == true)
-                    // {
-                    //     $('.loginFormulario').hide();  
-                    // }
-                    //$('.__responseLogin').empty();
-
                     $.each(response.erros, function(key, value)
                     {
                         $('.__responseLogin').append(value+'<br>');
@@ -72,8 +60,6 @@
         });
     });
 
-    /*==============================================*/
-    /*         Ajax do Saldo                       */ 
     $("#formSaldo").on("submit",function(event){
         event.preventDefault();
         var dados=$(this).serialize();
@@ -89,12 +75,6 @@
                 {
                     window.location.href=response.page;
                 } else {
-                    // if(response.tentativas == true)
-                    // {
-                    //     $('.loginFormulario').hide();  
-                    // }
-                    //$('.__responseLogin').empty();
-
                     $.each(response.erros, function(key, value)
                     {
                         $('.__responseSaldo').append(value+'<br><br>');

@@ -4,12 +4,14 @@
     use Models\ModelLogin;
     use Models\ModelRegister;
 
-    class ClassValidateLogin{
+    class ClassValidateLogin
+    {
         private array $err = [];
         private $password;
         private $cadastro_db;
         
-        public function __construct(){
+        public function __construct()
+        {
             $this->login = new ModelLogin();
             $this->password=new ClassPassword();
             $this->cadastro_db=new ModelRegister();
@@ -66,21 +68,53 @@
             }
         }
 
-       
-        public function validateSenha($_codigo_conta, $senha)
+        public function validateSenhaoof($_codigo_conta, $senha)
         {
-           
+            //echo  $_codigo_conta ."-----".$senha . "<br>";
+            //var_dump($this->password->verifyHash($_codigo_conta, $senha));
+
             if($this->password->verifyHash($_codigo_conta, $senha))
             {   
                 return true;  
             } else {  
                 $this->setErr("Senha Inválida!\n");  
-                return false;  
+                return false; 
             }
            
         }
 
-    
+        public function validateSenha($_codigo_conta,$senha)
+        {
+            $res = $this->cadastro_db->getIssetConta($_codigo_conta);
+            
+            if($res > 0)
+            {
+                if($this->password->verifyHash($_codigo_conta,$senha))
+                {   
+                    return true;  
+                } else {  
+                    $this->setErr("Senha Inválida!\n");  
+                    return false; 
+                }
+
+            } else {
+                $this->setErr("Conta Inexistente!\n");
+                return false;
+            }
+        
+            //echo  $_codigo_conta ."-----".$senha . "<br>";
+            //var_dump($this->password->verifyHash($_codigo_conta, $senha));
+
+            // if($this->password->verifyHash($_codigo_conta,$senha))
+            // {   
+            //     return true;  
+            // } else {  
+            //     $this->setErr("Senha Inválida!\n");  
+            //     return false; 
+            // }
+           
+        }
+
         public function validateFinalLogin($_codigo_conta)
         {
 
@@ -90,23 +124,17 @@
                     "retorno"=>"erro",
                     "erros"=>$this->getErr()
                 ];
-
-               
-            }else {
+            } else {
                     $arrayResponse=[
                         "retorno"=>"success",
                         "page"=>"home"
                         
                     ];
                        
-            $this->cadastro_db->isLogLogin($_codigo_conta);
-                
+                $this->cadastro_db->isLogLogin($_codigo_conta);
             } 
 
             return json_encode($arrayResponse);
         }
         
-     
-
-      
     }
