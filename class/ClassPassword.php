@@ -1,5 +1,4 @@
 <?php
-
     namespace Classes;
 
     use Models\ModelLogin;
@@ -19,22 +18,11 @@
             return password_hash($senha, PASSWORD_DEFAULT);
         }
 
-       
         #Verificar se o hash da senha está correto
         public function verifyHash($_codigo_conta,$senha)
         {
             $hashDb = $this->db->getDataUser($_codigo_conta);
-
-           // if(password_verify($senha, $hashDb["data"]["senha"]))
-            //{
-                return password_verify($senha, $hashDb["data"]["senha"]);
-           // } else {
-                // return password_verify($senha, $hashDb["data"]["senha"]);
-               // return false;
-           // }
-            
+            return password_verify($senha, $hashDb["data"]["senha"]);        
          
         }
-
-       
     }

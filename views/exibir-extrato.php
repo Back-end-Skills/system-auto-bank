@@ -20,8 +20,8 @@
     {
         extract($query_row);
 
-        $data_brasil = date('d-m-Y H:i:s', strtotime($data_create));
-        echo "<b> data </b> = ". $data_brasil . "<br>";
+        $data_format_brazil = date('d-m-Y H:i:s', strtotime($data_create));
+        echo "<b> data </b> = ". $data_format_brazil . "<br>";
                
         echo "<b> descricao </b> = ". $descricao . "<br>";        
 

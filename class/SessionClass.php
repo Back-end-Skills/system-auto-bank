@@ -5,8 +5,8 @@
 
         public function __construct()
         {
-                session_start(); 
-                ob_start(); 
+            session_start(); 
+            ob_start(); 
         }
 
     }

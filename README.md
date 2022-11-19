@@ -34,7 +34,7 @@ isto irá configurar o arquivo composer.json </p>
         - [x] Exceção 3. O sistema validará se a senha possuir no mínimo 6 dígitos :heavy_check_mark:
 
 
-2. Login system. Em desenvolvimento :warning:
+2. Login system. Concluído
     
     - [x] login
     - [x] inserção table log
@@ -42,8 +42,8 @@ isto irá configurar o arquivo composer.json </p>
 
     - 2.1 Validações
         - [x] Exceçã 1. O sistema avalia se a agência existe :heavy_check_mark:
-        - [ ] Exceçã 2. O sistema avalia se a conta existe
-        - [ ] Exceçã 3. O sistema avalia se a senha está correta
+        - [x] Exceçã 2. O sistema avalia se a conta existe :heavy_check_mark:
+        - [x] Exceçã 3. O sistema avalia se a senha está correta :heavy_check_mark:
 
 
 3. Consultar Saldo Conta Corrente. Concluido 
@@ -56,7 +56,7 @@ isto irá configurar o arquivo composer.json </p>
 4. Consultar Extrato Conta Corrente. Em desenvolvimento :warning: 
     - [x] Exceção 1. O sistema avalia se a agência existe  :heavy_check_mark:
     - [x] Exceção 2. O sistema avalia se a agência conta corrente  :heavy_check_mark:
-    - [x] Exceção 3. O sistema avalia se as datas inicial e final são válidas 
+    - [x] Exceção 3. O sistema avalia se as datas inicial e final são válidas :heavy_check_mark:
 
 
 5. Comprar Gift Card: Concluído
@@ -73,8 +73,6 @@ isto irá configurar o arquivo composer.json </p>
     - [x] Exceção 5. O sistema avalia se a conta de origem possue saldo suficiente :heavy_check_mark:
  
     
-
-
 ### 2 - Principais Referências: :books: 
 - [Web Design Em Foco](https://www.webdesignemfoco.com//)
 - [Celke](https://celke.com.br/)

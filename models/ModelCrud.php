@@ -1,7 +1,8 @@
 <?php
     namespace Models;
 
-    class ModelCrud extends ModelConnect{
+    class ModelCrud extends ModelConnect
+    {
 
         private $crud;
 
@@ -13,7 +14,6 @@
 
         }
 
-        #Seleção de dados
         public function selectDB($fields, $table, $where, $exec){
 
             $this->prepareExecute("SELECT {$fields} FROM {$table} {$where}", $exec);
@@ -21,7 +21,6 @@
 
         }
 
-        #Inserção de dados
         public function insertDB($table, $values, $exec){
 
             $this->prepareExecute("INSERT INTO {$table} VALUES ({$values})", $exec);
@@ -29,7 +28,6 @@
 
         }
 
-        #Delete de dados
         public function deleteDB($table, $where, $exec){
 
             $this->prepareExecute("DELETE FROM {$table} WHERE {$where}", $exec);
@@ -37,7 +35,6 @@
 
         }
 
-        #Atualização de dados
         public function updateDB($table, $values, $where, $exec){
 
             $this->prepareExecute("UPDATE {$table} SET {$values} WHERE {$where}", $exec);

@@ -15,7 +15,6 @@
             $this->login = new ModelLogin();
             $this->password=new ClassPassword();
             $this->cadastro_db=new ModelRegister();
-
         }
 
         public function getErr(){
@@ -70,9 +69,6 @@
 
         public function validateSenhaoof($_codigo_conta, $senha)
         {
-            //echo  $_codigo_conta ."-----".$senha . "<br>";
-            //var_dump($this->password->verifyHash($_codigo_conta, $senha));
-
             if($this->password->verifyHash($_codigo_conta, $senha))
             {   
                 return true;  
@@ -80,7 +76,6 @@
                 $this->setErr("Senha Inválida!\n");  
                 return false; 
             }
-           
         }
 
         public function validateSenha($_codigo_conta,$senha)
@@ -101,23 +96,11 @@
                 $this->setErr("Conta Inexistente!\n");
                 return false;
             }
-        
-            //echo  $_codigo_conta ."-----".$senha . "<br>";
-            //var_dump($this->password->verifyHash($_codigo_conta, $senha));
-
-            // if($this->password->verifyHash($_codigo_conta,$senha))
-            // {   
-            //     return true;  
-            // } else {  
-            //     $this->setErr("Senha Inválida!\n");  
-            //     return false; 
-            // }
            
         }
 
         public function validateFinalLogin($_codigo_conta)
         {
-
             if(count($this->getErr()) > 0)
             {
                 $arrayResponse=[

@@ -9,16 +9,17 @@
         private array $err = [];
         private $cadastro_db;
         
-        public function __construct(){
+        public function __construct()
+        {
             $this->login = new ModelLogin();
             $this->password=new ClassPassword();
             $this->cadastro_db=new ModelRegister();
-
         }
 
         public function getErr(){
             return $this->err;
         }
+
         public function setErr($erro){
             array_push($this->err, $erro);
         }
@@ -40,7 +41,6 @@
             }
         }
         
-        #validacao agencia
         public function validateAgencia($_codigo_agencia)
         {
             $res_agencia = $this->cadastro_db->getIssetAgencia($_codigo_agencia);
@@ -55,7 +55,6 @@
 
         } 
 
-        #validação conta
         public function validateConta($_codigo_conta)
         {
             $res_conta = $this->cadastro_db->getIssetConta($_codigo_conta);
@@ -66,28 +65,26 @@
             } else {
                 $this->setErr("Conta Inválida!\n");
                 return false; 
-                
             }
 
         }    
 
 
-         #validacao agencia
-         public function validateAgenciaDestino($_codigo_agencia_destino)
-         {
-             $res_agencia = $this->cadastro_db->getIssetAgencia($_codigo_agencia_destino);
+         
+        public function validateAgenciaDestino($_codigo_agencia_destino)
+        {
+            $res_agencia = $this->cadastro_db->getIssetAgencia($_codigo_agencia_destino);
  
-             if($res_agencia > 0 )
-             {
+            if($res_agencia > 0 )
+            {
                 return true; 
-             } else {
-                 $this->setErr("Agencia de Destino Inválida\n");
-                 return false; 
-             }
+            } else {
+                $this->setErr("Agencia de Destino Inválida\n");
+                return false; 
+            }
  
-         } 
+        } 
 
-        #validação conta
         public function validateContaDestino($_codigo_conta_destino)
         {
             $res_conta = $this->cadastro_db->getIssetConta($_codigo_conta_destino);
@@ -107,7 +104,6 @@
         public function validateSaldo(array $arr)
         {   
             $select_conta_origem=$this->cadastro_db->getSaldo($arr);
-            //var_dump($select_conta_origem);
 
             if($select_conta_origem > 0) 
             {
@@ -119,20 +115,14 @@
             }
         }
 
-         
-
-        #Validação final da transferencia
         public function  validateFinalTransf($arrayVarTransf)
         {
-            
-          
             if(count($this->getErr()) > 0)
             {
                 $arrayResponse=[
                     "retorno"=>"erro",
                     "erros"=>$this->getErr()
                 ];
-
                
             }else {
                     $arrayResponse=[
@@ -143,7 +133,6 @@
                     //gravar depósito
                     $this->cadastro_db->insertTransf($arrayVarTransf);            
             }           
-
             return json_encode($arrayResponse);
         }
     }
