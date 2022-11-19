@@ -1,7 +1,7 @@
 <?php
     namespace Classes;
 
-    use Models\ModelLogin;
+    //use Models\ModelLogin;
     use Models\ModelRegister;
 
     class ClassValidateLogin
@@ -12,7 +12,7 @@
         
         public function __construct()
         {
-            $this->login = new ModelLogin();
+            //$this->login = new ModelLogin();
             $this->password=new ClassPassword();
             $this->cadastro_db=new ModelRegister();
         }
@@ -53,30 +53,6 @@
                 return false;
             }
         }
-
-        // public function validateConta(string $conta)
-        // {
-        //     $res = $this->cadastro_db->getIssetConta($conta);
-            
-        //     if($res > 0)
-        //     {
-        //         return true;
-        //     } else {
-        //         $this->setErr("Conta Inexistente!\n");
-        //         return false;
-        //     }
-        // }
-
-        // public function validateSenhaoof($_codigo_conta, $senha)
-        // {
-        //     if($this->password->verifyHash($_codigo_conta, $senha))
-        //     {   
-        //         return true;  
-        //     } else {  
-        //         $this->setErr("Senha Inválida!\n");  
-        //         return false; 
-        //     }
-        // }
 
         public function validateSenha($_codigo_conta,$senha)
         {

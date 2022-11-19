@@ -1,7 +1,7 @@
 <?php
     namespace Classes;
 
-    use Models\ModelLogin;
+    //use Models\ModelLogin;
     use Models\ModelRegister;
 
     class ClassValidateTransferencia
@@ -11,8 +11,8 @@
         
         public function __construct()
         {
-            $this->login = new ModelLogin();
-            $this->password=new ClassPassword();
+            //$this->login = new ModelLogin();
+            //$this->password=new ClassPassword();
             $this->cadastro_db=new ModelRegister();
         }
 
@@ -68,8 +68,6 @@
             }
 
         }    
-
-
          
         public function validateAgenciaDestino($_codigo_agencia_destino)
         {

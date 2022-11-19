@@ -3,7 +3,7 @@
 
     use Models\ModelRegister;
     use Models\ModelLogin;
-    use Classes\ClassPassword;
+    //use Classes\ClassPassword;
 
     class ClassValidate
     {
@@ -15,7 +15,7 @@
         public function __construct()
         {
             $this->cadastro=new ModelRegister(); 
-            $this->password=new ClassPassword();
+            //$this->password=new ClassPassword();
             $this->login   =new ModelLogin(); 
             $this->extrato_dados = new ModelLogin();  
         }
