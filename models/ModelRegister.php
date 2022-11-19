@@ -90,22 +90,18 @@
 
         }
 
-        public function getConta($param)
+        public function getConta($conta)
         {
-            return $this->selectDB( "*", 
-                                    "conta", 
-                                    "WHERE codigo_conta=?", 
-                                    array(
-                                        $param
-                                    )
-                            );
-        }
+            return $this->selectDB( "*", "conta", "WHERE codigo_conta=?", array($conta));
+              
+        }       
 
         #Compra de GIFT CARD
         public function insertGiftCard($arrVarGiftCard)
         {
             
-            $conta = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arrVarGiftCard['conta']));
+            // $conta = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arrVarGiftCard['conta']));
+            $conta = $this->getConta($arrVarGiftCard['conta']);
             $c_result = $conta->fetch(\PDO::FETCH_ASSOC);
             $id_conta=$c_result['id_conta'];                   
  
@@ -196,13 +192,12 @@
         }
 
         #Veriricar se existe Conta
-        public function getIssetConta(string $_codigo_conta){
-
+        public function getIssetConta(string $_codigo_conta)
+        {
             // $b=$this->selectDB("*", "conta", "where codigo_conta=?", array($_codigo_conta));
-            $b=$this->getConta($_codigo_conta);
+            $res=$this->getConta($_codigo_conta);
 
-            return $b->rowCount();
-            
+            return $res->rowCount();   
         }
 
         #Grava log de login

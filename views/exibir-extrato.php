@@ -20,29 +20,36 @@
     {
         extract($query_row);
 
-        $data_format_brazil = date('d-m-Y H:i:s', strtotime($data_create));
-        echo "<b> data </b> = ". $data_format_brazil . "<br>";
+        $data_format_brazil = date('d-m-Y H:i:s', strtotime($data_create));      
                
-        echo "<b> descricao </b> = ". $descricao . "<br>";        
+        // echo "<b> descricao </b> = ". $descricao . "<br>";        
 
         $query_log = $crud->selectDB("*", "log", "WHERE fk_codigo_transacao=?", array($codigo));
 
         while($result_log = $query_log->fetch(\PDO::FETCH_ASSOC))
         {
             extract($result_log);
-
+                        
             if($tipo == 'credito' )
-            {
-                echo "<b>Valor Crédito </b> +" . $valor_transacao . "<br>";
-       
-            } else {
-                echo "<b>Valor Débito </b>  -" . $valor_transacao . "<br>";
+            {   
+                echo "<b> data </b> = ". $data_format_brazil . "<br>";
+                echo "<b>Crédito </b> +" . $valor_transacao . "<br>";
                 
-            }
-            echo "------------------------------------------ <br>"; 
+                echo "------------------------------------------ <br>";  
+            } else {
+                if ($tipo == 'debito')
+                {
+                    echo "<b> data </b> = ". $data_format_brazil . "<br>";
+                    echo "<b>Débito </b>  -" . $valor_transacao . "<br>";
+                   
+                    echo "------------------------------------------ <br>"; 
+                } else {
+                    echo "";   
+                }                
+            }           
 
         }
         
     }
 
-    echo "<br>Saldo =".  $_SESSION["saldo"];
+    echo "<br>Saldo = ".  $_SESSION["saldo"];

@@ -85,7 +85,8 @@
         
         public function validateDataExtrato($arrayVarExtrato)
         {
-            if($arrayVarExtrato['data_inicial'] > $arrayVarExtrato['data_final'])
+            // if($arrayVarExtrato['data_inicial'] > $arrayVarExtrato['data_final'])
+            if($arrayVarExtrato['data_inicial'] > date('Y-m-d h:i:s'))
             {
                 $this->setErro("Data inicial Inválida!\n");
                 return false;
@@ -96,9 +97,9 @@
                     $this->setErro("Data Final Inválida\n");
                     return false;
                 } else {
-                    if($arrayVarExtrato['data_final'] > $arrayVarExtrato['data_inicial']) 
+                    if($arrayVarExtrato['data_final'] < $arrayVarExtrato['data_inicial']) 
                     {
-                        $this->setErro("Data final não pode ser \n maior que data inicial\n");
+                        $this->setErro("Data final não pode ser \n menor que data inicial\n");
                         return false;
                     } else {
                         return true;

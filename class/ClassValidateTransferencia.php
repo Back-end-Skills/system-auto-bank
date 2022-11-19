@@ -129,8 +129,6 @@
                         "retorno"=>"success",
                                                 
                     ];   
-                    
-                    //gravar depósito
                     $this->cadastro_db->insertTransf($arrayVarTransf);            
             }           
             return json_encode($arrayResponse);
