@@ -16,8 +16,7 @@
             success: function (response) 
             {
                 if(response.retorno == 'success')
-                {
-                   
+                {  
                     $('.__responseSuccess').append('Depósito realizado com Sucesso!\n');
                     
                     //Limpa os inputs

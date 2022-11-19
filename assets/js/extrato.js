@@ -4,13 +4,12 @@
         return root;
     }
 
-   
     $("#formExtr").on("submit",function(event){
         event.preventDefault();
         var dados=$(this).serialize();
 
         $.ajax({
-        url: getRoot()+'controllers/controllerExtrato',
+            url: getRoot()+'controllers/controllerExtrato',
             type: 'post',
             dataType: 'json',
             data: dados,

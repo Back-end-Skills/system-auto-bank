@@ -54,32 +54,33 @@
             }
         }
 
-        public function validateConta(string $conta)
-        {
-            $res = $this->cadastro_db->getIssetConta($conta);
+        // public function validateConta(string $conta)
+        // {
+        //     $res = $this->cadastro_db->getIssetConta($conta);
             
-            if($res > 0)
-            {
-                return true;
-            } else {
-                $this->setErr("Conta Inexistente!\n");
-                return false;
-            }
-        }
+        //     if($res > 0)
+        //     {
+        //         return true;
+        //     } else {
+        //         $this->setErr("Conta Inexistente!\n");
+        //         return false;
+        //     }
+        // }
 
-        public function validateSenhaoof($_codigo_conta, $senha)
-        {
-            if($this->password->verifyHash($_codigo_conta, $senha))
-            {   
-                return true;  
-            } else {  
-                $this->setErr("Senha Inválida!\n");  
-                return false; 
-            }
-        }
+        // public function validateSenhaoof($_codigo_conta, $senha)
+        // {
+        //     if($this->password->verifyHash($_codigo_conta, $senha))
+        //     {   
+        //         return true;  
+        //     } else {  
+        //         $this->setErr("Senha Inválida!\n");  
+        //         return false; 
+        //     }
+        // }
 
         public function validateSenha($_codigo_conta,$senha)
         {
+            //Validação conta 
             $res = $this->cadastro_db->getIssetConta($_codigo_conta);
             
             if($res > 0)
@@ -114,7 +115,7 @@
                         
                     ];
                        
-                $this->cadastro_db->isLogLogin($_codigo_conta);
+                    $this->cadastro_db->isLogLogin($_codigo_conta);
             } 
 
             return json_encode($arrayResponse);

@@ -203,8 +203,8 @@
             $trans_result =  $res_select_transacao->fetch(\PDO::FETCH_ASSOC);
             $codigo_transacao=$trans_result['codigo'];
 
-            $this->insertDB( "log", "?,?,?,?,?,?,?,?",
-                        array( 0, $codigo_transacao, $f['codigo_agencia'], $f['codigo_conta'], "0", "0", 0, $this->dataNow() ) );
+            $this->insertDB("log", "?,?,?,?,?,?,?,?",
+                        array(0, $codigo_transacao, $f['codigo_agencia'], $f['codigo_conta'], "0", "0", 0, $this->dataNow()));
             
         }
 

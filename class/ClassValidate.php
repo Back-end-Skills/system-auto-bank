@@ -10,7 +10,6 @@
         private $erro=[]; 
         private $cadastro;
         private $extrato_dados;
-        //private $password;
         private $login;       
 
         public function __construct()
@@ -19,7 +18,6 @@
             $this->password=new ClassPassword();
             $this->login   =new ModelLogin(); 
             $this->extrato_dados = new ModelLogin();  
-         
         }
 
         public function getErro() { return $this->erro; }
@@ -54,7 +52,6 @@
                 if($b > 0) { $this->setErro("Email já cadastrado!"); return false; } 
                 else { return true; }
             } 
-        
         }
 
         #Validação data nasciemento > 17 
@@ -173,8 +170,6 @@
                     "retorno"=>"erro",
                     "erros"=>$this->getErro()
                 ];
-
-               
             }else {
                     $arrayResponse=[
                         "retorno"=>"success",
@@ -201,15 +196,12 @@
 
         public function  validateFinalSaldo($_codigo_conta)
         {
-             
             if(count($this->getErro()) > 0)
             {
                  $arrayResponse=[
                      "retorno"=>"erro",
                      "erros"=>$this->getErro()
                  ];
- 
-                
             }  else {
                      $arrayResponse=[
                          "retorno"=>"success",
@@ -226,9 +218,6 @@
                      $_SESSION["saldo"]=$this->login->getDataUser($_codigo_conta)['_data']['saldo'];
    
             } 
- 
-            //$this->cadastro_db->isLogLogin($_codigo_conta);
- 
             return json_encode($arrayResponse);
         }
 

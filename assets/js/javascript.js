@@ -9,7 +9,7 @@
         var dados=$(this).serialize();
 
         $.ajax({
-        url: getRoot()+'controllers/controllerRegister',
+            url: getRoot()+'controllers/controllerRegister',
             type: 'post',
             dataType: 'json',
             data: dados,
@@ -41,7 +41,7 @@
         var dados=$(this).serialize();
 
         $.ajax({
-        url: getRoot()+'controllers/controllerLogin',
+            url: getRoot()+'controllers/controllerLogin',
             type: 'post',
             dataType: 'json',
             data: dados,
@@ -65,7 +65,7 @@
         var dados=$(this).serialize();
 
         $.ajax({
-        url: getRoot()+'controllers/controllerSaldo',
+            url: getRoot()+'controllers/controllerSaldo',
             type: 'post',
             dataType: 'json',
             data: dados,
