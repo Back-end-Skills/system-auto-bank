@@ -78,7 +78,9 @@ isto irá configurar o arquivo composer.json </p>
 - [Celke](https://celke.com.br/)
 - [PHP DOCS](https://www.php.net/manual/pt_BR/)
 
-<img align="justify" src="shema_db.png"/> 
+<img  width= "60%"
+  margin= "auto"
+  display= "block" src="shema_db.PNG"/> 
 <br>
-<img align="justify" src="diagrama_classes_auto_bank.png"/> 
+<img width: 60%; margin: auto; display: block; src="diagrama_classes_auto_bank.PNG"/> 
  
