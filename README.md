@@ -1,5 +1,5 @@
 <h1 align="center"> System Auto Bank Em PHP</h1>
-<img src="php.jpeg"/> 
+<img align="justify" src="php.jpeg"/> 
 <p> </p>     
 <p align="justify"> Desafio Dev Back End | W3 </p>
 
@@ -77,4 +77,8 @@ isto irá configurar o arquivo composer.json </p>
 - [Web Design Em Foco](https://www.webdesignemfoco.com//)
 - [Celke](https://celke.com.br/)
 - [PHP DOCS](https://www.php.net/manual/pt_BR/)
+
+<img align="justify" src="shema_db.png"/> 
+<br>
+<img align="justify" src="diagrama_classes_auto_bank.png"/> 
  
