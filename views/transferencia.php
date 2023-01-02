@@ -35,7 +35,7 @@
                     <label for="">Conta destino</label><br>
                     <input type="text" name="codigo_conta_destino"  id="codigo_conta_destino" placeholder="Código Conta destino" require/><br><br> 
               
-                    <button type='submit' >Enviar</button><br><br>
+                    <button type='submit' >Enviar Valor</button><br><br>
                     
                 </form>
             </div>

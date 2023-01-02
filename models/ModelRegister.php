@@ -94,13 +94,22 @@
         {
             return $this->selectDB( "*", "conta", "WHERE codigo_conta=?", array($conta));
               
-        }       
+        }    
+         #Veriricar se existe agencia
+         public function getIssetAgencia(string $_codigo_agencia)
+         {
+ 
+             $b=$this->selectDB("*", "conta", "where codigo_agencia=?", array($_codigo_agencia));
+                         
+             return $b->rowCount();
+             
+         }   
 
         #Compra de GIFT CARD
         public function insertGiftCard($arrVarGiftCard)
         {
             
-            // $conta = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arrVarGiftCard['conta']));
+            
             $conta = $this->getConta($arrVarGiftCard['conta']);
             $c_result = $conta->fetch(\PDO::FETCH_ASSOC);
             $id_conta=$c_result['id_conta'];                   
@@ -181,20 +190,12 @@
             
         }
       
-        #Veriricar se existe agencia
-        public function getIssetAgencia(string $_codigo_agencia)
-        {
-
-            $b=$this->selectDB("*", "conta", "where codigo_agencia=?", array($_codigo_agencia));
-                        
-            return $b->rowCount();
-            
-        }
+       
 
         #Veriricar se existe Conta
         public function getIssetConta(string $_codigo_conta)
         {
-            // $b=$this->selectDB("*", "conta", "where codigo_conta=?", array($_codigo_conta));
+            
             $res=$this->getConta($_codigo_conta);
 
             return $res->rowCount();   
@@ -203,7 +204,7 @@
         #Grava log de login
         public function isLogLogin($_codigo_conta)
         {
-            // $query=$this->selectDB("*", "conta", "where codigo_conta=?", array($_codigo_conta));
+        
             $query=$this->getConta($_codigo_conta);
             $f = $query->fetch(\PDO::FETCH_ASSOC);
             $id_conta = $f['id_conta'];
@@ -222,7 +223,7 @@
         // Pega as transações do cliente
         public function getTransacao($arrTrans)
         {
-            // $b=$this->selectDB("*", "conta","where codigo_conta=?", array($arrTrans));
+           
             $b=$this->getConta($arrTrans);            
             $f=$b->fetch(\PDO::FETCH_ASSOC);       
             $id_conta = $f['id_conta'];  
@@ -240,10 +241,9 @@
             
         }
 
-        #Realizar deposito
+       
         public function insertDeposito($arrayVarDep)
         {   
-            // $conta = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arrayVarDep['conta']));
             $conta = $this->getConta($arrayVarDep['conta']);
             
             if($c_result = $conta->fetch(\PDO::FETCH_ASSOC))
@@ -257,7 +257,7 @@
                 if($res->rowCount() > 0)
                 {   
                            
-                    $transacao=$this->selectDB("*", "transacao", "where fk_conta=?", array($id_conta));
+                    $transacao=$this->selectDB("*", "transacao", "where fk_conta=? ORDER BY codigo DESC LIMIT 1", array($id_conta));
                     $result = $transacao->fetch(\PDO::FETCH_ASSOC);
                     $codigo_transacao = $result['codigo'];
                          
@@ -325,7 +325,6 @@
         #Realizará deposito na conta de destino
         public function insertTransf($arrayVarTransf)
         {
-            // $conta_destino = $this->selectDB("*", "conta", "WHERE codigo_conta=?", array($arrayVarTransf['conta_destino']));
             $conta_destino = $this->getConta($arrayVarTransf['conta_destino']);
             $result_conta = $conta_destino->fetch(\PDO::FETCH_ASSOC);
             $id_conta_destino = $result_conta['id_conta'];

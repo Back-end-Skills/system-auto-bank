@@ -12,7 +12,10 @@
             $f = $b->fetch(\PDO::FETCH_ASSOC);
             $r=$b->rowCount();
 
-            $arrayData = [ "_data" => $f, "_rows"=>$r ];
+            $arrayData = [ 
+                "_data" => $f, 
+                "_rows"=>$r 
+            ];
 
             $fk_cliente = $f['fk_cliente'];
 
